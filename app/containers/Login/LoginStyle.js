@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const LoginPageStyle = styled.div`
+const LoginStyle = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,4 +13,4 @@ const LoginPageStyle = styled.div`
   }
 `;
 
-export default LoginPageStyle;
+export default LoginStyle;

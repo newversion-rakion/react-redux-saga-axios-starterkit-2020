@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 import logo from 'images/logo.svg';
 
 const Logo = () => (
-  <div>
+  <div className="mainLogo">
     <Link to="/">
       <img src={logo} alt="logo" />
     </Link>
