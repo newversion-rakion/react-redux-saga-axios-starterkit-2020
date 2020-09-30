@@ -8,27 +8,18 @@
 
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import styled from 'styled-components';
 import { Switch, Route } from 'react-router-dom';
 
+import CompanyLayout from 'layouts/CompanyLayout';
+import ApplicantLayout from 'layouts/ApplicantLayout';
 import Login from 'containers/Login/Loadable';
-import DashBoard from 'containers/DashBoard/Loadable';
+import RouterInterceptor from 'utils/routerInterceptor';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
-
 import GlobalStyle from '../../global-styles';
-
-const AppWrapper = styled.div`
-  max-width: calc(768px + 16px * 2);
-  margin: 0 auto;
-  display: flex;
-  min-height: 100%;
-  padding: 0 16px;
-  flex-direction: column;
-`;
 
 export default function App() {
   return (
-    <AppWrapper>
+    <div>
       <Helmet
         titleTemplate="Mixer, The Creative Network"
         defaultTitle="Mixer, The Creative Network"
@@ -38,10 +29,11 @@ export default function App() {
       <Switch>
         <Route path="/" exact component={Login} />
         <Route path="/login" exact component={Login} />
-        <Route path="/dashboard" exact component={DashBoard} />
+        <RouterInterceptor path="/company" component={CompanyLayout} />
+        <RouterInterceptor path="/applicant" component={ApplicantLayout} />
         <Route path="" component={NotFoundPage} />
       </Switch>
       <GlobalStyle />
-    </AppWrapper>
+    </div>
   );
 }

@@ -17,7 +17,7 @@ import LoginForm from './components/LoginForm';
 import makeSelectLogin from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import LoginPageStyle from './LoginPageStyle';
+import LoginStyle from './LoginStyle';
 export function Login() {
   useInjectReducer({ key: 'login', reducer });
   useInjectSaga({ key: 'login', saga });
@@ -28,12 +28,12 @@ export function Login() {
         <title>Login</title>
         <meta name="description" content="Login Page" />
       </Helmet>
-      <LoginPageStyle>
+      <LoginStyle>
         <div className="pageContent">
           <Logo />
           <LoginForm />
         </div>
-      </LoginPageStyle>
+      </LoginStyle>
     </div>
   );
 }

@@ -1,10 +1,14 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import LoginFormStyle from './LoginFormStyle';
 export default function LoginForm() {
   const { register, handleSubmit, errors } = useForm();
-  const onSubmit = data => console.log(data);
+  const history = useHistory();
+  const onSubmit = () => {
+    localStorage.setItem('token', 'draftToken');
+    history.push('/company/dashboard');
+  };
 
   return (
     <LoginFormStyle>

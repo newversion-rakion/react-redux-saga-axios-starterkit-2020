@@ -11,10 +11,10 @@ import messages from './messages';
 
 export default function NotFound() {
   return (
-    <article>
+    <div className="container">
       <h1>
         <FormattedMessage {...messages.header} />
       </h1>
-    </article>
+    </div>
   );
 }

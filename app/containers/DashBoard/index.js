@@ -1,14 +1,6 @@
-/**
- *
- * DashBoard
- *
- */
-
 import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
@@ -17,8 +9,7 @@ import { useInjectReducer } from 'utils/injectReducer';
 import makeSelectDashBoard from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import messages from './messages';
-
+import DashBoardStyle from './DashBoardStyle';
 export function DashBoard() {
   useInjectReducer({ key: 'dashBoard', reducer });
   useInjectSaga({ key: 'dashBoard', saga });
@@ -29,14 +20,12 @@ export function DashBoard() {
         <title>DashBoard</title>
         <meta name="description" content="Description of DashBoard" />
       </Helmet>
-      <FormattedMessage {...messages.header} />
+      <DashBoardStyle>
+        <div className="pageContent">Dashboard content</div>
+      </DashBoardStyle>
     </div>
   );
 }
-
-DashBoard.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-};
 
 const mapStateToProps = createStructuredSelector({
   dashBoard: makeSelectDashBoard(),
