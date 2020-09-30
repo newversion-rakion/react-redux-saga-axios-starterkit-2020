@@ -8,17 +8,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-
+import Logo from 'components/Logo';
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
+import LoginForm from './components/LoginForm';
 import makeSelectLogin from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import messages from './messages';
-
+import LoginPageStyle from './LoginPageStyle';
 export function Login() {
   useInjectReducer({ key: 'login', reducer });
   useInjectSaga({ key: 'login', saga });
@@ -27,9 +26,14 @@ export function Login() {
     <div>
       <Helmet>
         <title>Login</title>
-        <meta name="description" content="Description of Login" />
+        <meta name="description" content="Login Page" />
       </Helmet>
-      <FormattedMessage {...messages.header} />
+      <LoginPageStyle>
+        <div className="pageContent">
+          <Logo />
+          <LoginForm />
+        </div>
+      </LoginPageStyle>
     </div>
   );
 }
