@@ -1,4 +1,4 @@
-## React Boilerplate
+## Mixer, The Creative Network
 
 Thank you for contributing! Please take a moment to review our [**contributing guidelines**](https://github.com/react-boilerplate/react-boilerplate/blob/master/CONTRIBUTING.md)
 to make the process easy and effective for everyone involved.
