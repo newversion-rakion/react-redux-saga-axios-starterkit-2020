@@ -23,6 +23,12 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+  a, button {
+    &:focus, &:active {
+      outline: 0;
+    }
+  }
+
   img {
     max-width: 100%;
   }
