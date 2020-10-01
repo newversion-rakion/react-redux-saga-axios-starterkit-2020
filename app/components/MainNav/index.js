@@ -85,40 +85,40 @@ function MainNav() {
             </span>
           </NavLink>
 
-          <NavLink to="/company/job">
-            <span className="mainNavText">
-              <img src={jobListingsIcon} alt="" />
-              Job Listings
-            </span>
-            <div className="behaviorBox">
-              <img src={plusIcon} alt="" />
-            </div>
-          </NavLink>
+        <NavLink activeClassName="isActive" to="/company/job">
+          <span className="mainNavText">
+            <img src={jobListingsIcon} alt="" />
+            Job Listings
+          </span>
+          <div className="behaviorBox">
+            <img src={plusIcon} alt="" />
+          </div>
+        </NavLink>
 
-          <NavLink to="/company/jobListings">
-            <span className="mainNavText">
-              <img src={membersIcon} alt="" />
-              Members
-            </span>
-          </NavLink>
+        <NavLink activeClassName="isActive" to="/company/jobListings">
+          <span className="mainNavText">
+            <img src={membersIcon} alt="" />
+            Members
+          </span>
+        </NavLink>
 
-          <NavLink to="/company/messages">
-            <span className="mainNavText">
-              <img src={messagesIcon} alt="" />
-              Messages
-            </span>
-            <div className="behaviorBox">
-              <span className="mainNavStatus">99+</span>
-            </div>
-          </NavLink>
-        </nav>
-        <nav className="mainNavGroup">
-          <NavLink activeClassName="isActive" to="/company/team">
-            <span className="mainNavText">
-              <img src={teamIcon} alt="" />
-              Team
-            </span>
-          </NavLink>
+        <NavLink activeClassName="isActive" to="/company/messages">
+          <span className="mainNavText">
+            <img src={messagesIcon} alt="" />
+            Messages
+          </span>
+          <div className="behaviorBox">
+            <span className="mainNavStatus">99+</span>
+          </div>
+        </NavLink>
+      </nav>
+      <nav className="mainNavGroup">
+        <NavLink activeClassName="isActive" to="/company/team">
+          <span className="mainNavText">
+            <img src={teamIcon} alt="" />
+            Team
+          </span>
+        </NavLink>
 
           <NavLink to="/company/jobListings">
             <span className="mainNavText">

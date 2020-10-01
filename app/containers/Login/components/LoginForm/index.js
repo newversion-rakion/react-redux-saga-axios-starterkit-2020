@@ -7,7 +7,7 @@ export default function LoginForm() {
   const history = useHistory();
   const onSubmit = () => {
     localStorage.setItem('token', 'draftToken');
-    history.push('/company/dashboard');
+    history.push('/company/team');
   };
 
   return (
