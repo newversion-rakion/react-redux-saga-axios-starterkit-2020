@@ -10,6 +10,25 @@ const MainNavStyle = styled.div`
     padding: 30px;
   }
 
+  .companyBox {
+    padding: 10px 30px 0;
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      font-size: 16px;
+      font-family: ${CSS.FONT700};
+      color: #000000;
+    }
+    span {
+      padding: 0 10px 0 0;
+      img {
+        margin: 0 3px 0 0;
+      }
+    }
+  }
+
   .postJobBox {
     padding: 10px 30px 50px;
     a {
@@ -44,6 +63,7 @@ const MainNavStyle = styled.div`
     a {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       width: 100%;
       font-family: ${CSS.FONT600};
       font-size: 16px;
@@ -52,14 +72,26 @@ const MainNavStyle = styled.div`
       padding: 19px 30px;
       transition: all 0.3s ease 0s;
       margin: 0 0 20px;
+      &.isActive,
       &:hover,
       &:active {
         background: #f5f9fc;
         color: #2b75cc;
       }
+    }
+    .behaviorBox {
+      text-align: right;
+    }
+    .mainNavText {
+      padding: 0 10px 0 0;
       img {
         margin: 0 10px 0 0;
       }
+    }
+    .mainNavStatus {
+      font-size: 12px;
+      font-family: ${CSS.FONT700};
+      color: #2b75cc;
     }
   }
 `;

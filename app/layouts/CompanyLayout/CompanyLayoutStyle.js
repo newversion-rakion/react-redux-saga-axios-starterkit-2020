@@ -6,7 +6,6 @@ const CompanyLayout = styled.div`
   flex-wrap: wrap;
   .mainPage {
     width: calc(100% - 300px);
-    padding: 30px;
   }
 `;
 
