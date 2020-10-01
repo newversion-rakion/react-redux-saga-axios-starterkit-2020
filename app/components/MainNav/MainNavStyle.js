@@ -5,9 +5,72 @@ const MainNavStyle = styled.div`
   width: 300px;
   min-height: 100vh;
   box-shadow: 4px 0px 16px rgba(0, 0, 0, 0.04);
-  padding: 18px 0;
+  padding: 0;
+  @media screen and (max-width: 769px) {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 998;
+    pointer-events: none;
+  }
+  .btnOpenMainNav {
+    width: 20px;
+    position: fixed;
+    z-index: 997;
+    cursor: pointer;
+    top: 20px;
+    left: 20px;
+    pointer-events: initial;
+    span {
+      width: 100%;
+      display: block;
+      height: 2.5px;
+      background: #333333;
+      border-radius: 3px;
+      & ~ span {
+        margin: 4px 0 0;
+      }
+    }
+  }
+  .btnCloseMainNav {
+    display: none;
+    @media screen and (max-width: 769px) {
+      display: block;
+      position: absolute;
+      top: 24px;
+      right: 30px;
+      cursor: pointer;
+    }
+  }
+  .mainNavOverlay {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    display: none;
+    @media screen and (max-width: 769px) {
+      // display: block;
+    }
+  }
+  .mainNavContent {
+    padding: 18px 0;
+    @media screen and (max-width: 769px) {
+      width: 300px;
+      position: relative;
+      height: 100vh;
+      overflow-y: scroll;
+      background: #ffffff;
+      transition: all 0.3s ease 0s;
+      transform: translateX(-300px);
+    }
+  }
   .mainLogo {
     padding: 30px;
+    @media screen and (max-width: 769px) {
+      padding: 6px 30px 21px;
+    }
   }
 
   .companyBox {
