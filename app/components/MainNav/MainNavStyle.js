@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import * as CSS from 'utils/styleSheetHelpers';
 
 const MainNavStyle = styled.div`
   width: 300px;
@@ -16,11 +17,12 @@ const MainNavStyle = styled.div`
       align-items: center;
       justify-content: center;
       max-width: 140px;
-      padding: 5px 28px;
+      padding: 5px 15px;
       font-size: 12.5263px;
       color: #2b75cc;
       border: 2px solid #2b75cc;
       border-radius: 50px;
+      font-family: ${CSS.FONT700};
       img {
         margin: 0 5px 0 0;
       }
@@ -43,7 +45,7 @@ const MainNavStyle = styled.div`
       display: flex;
       align-items: center;
       width: 100%;
-      font-weight: 600;
+      font-family: ${CSS.FONT600};
       font-size: 16px;
       line-height: 22px;
       color: #333333;
