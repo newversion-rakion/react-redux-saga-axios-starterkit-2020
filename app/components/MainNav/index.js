@@ -39,7 +39,7 @@ function MainNav() {
         </NavLink>
       </div>
       <div className="postJobBox">
-        <NavLink className="btnPostJob" to="/company/postJob">
+        <NavLink className="btnPostJob" to="/">
           <span>
             <img src={postJobIcon} alt="" />
             Post Job
@@ -54,7 +54,7 @@ function MainNav() {
           </span>
         </NavLink>
 
-        <NavLink to="/company/jobListings">
+        <NavLink to="/company/job">
           <span className="mainNavText">
             <img src={jobListingsIcon} alt="" />
             Job Listings
