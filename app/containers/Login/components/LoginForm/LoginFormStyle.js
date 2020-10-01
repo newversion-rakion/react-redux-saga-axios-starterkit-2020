@@ -60,14 +60,6 @@ const LoginFormStyle = styled.div`
       display: inline-block;
     }
   }
-
-  .formError {
-    color: red;
-    display: block;
-    text-align: left;
-    font-size: 12px;
-    padding: 10px 0;
-  }
 `;
 
 export default LoginFormStyle;

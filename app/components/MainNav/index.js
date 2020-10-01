@@ -8,7 +8,7 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 // import styled from 'styled-components';
 import Logo from 'components/Logo';
-import { Link, useHistory } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import dashboardIcon from 'images/icons/mainNav/dashboard.svg';
 import jobListingsIcon from 'images/icons/mainNav/jobListings.svg';
 import membersIcon from 'images/icons/mainNav/members.svg';
@@ -17,58 +17,93 @@ import teamIcon from 'images/icons/mainNav/team.svg';
 import settingsIcon from 'images/icons/mainNav/settings.svg';
 import billingIcon from 'images/icons/mainNav/billing.svg';
 import postJobIcon from 'images/icons/mainNav/postJob.svg';
+import editIcon from 'images/icons/mainNav/edit.svg';
+import plusIcon from 'images/icons/mainNav/plus.svg';
+import companyThumb from 'images/draft/companyThumb.svg';
 
 import MainNavStyle from './MainNavStyle';
 
 function MainNav() {
   const history = useHistory();
+
   return (
     <MainNavStyle>
       <Logo />
+      <div className="companyBox">
+        <NavLink className="btnEditCompany" to="/company/editCompany">
+          <span>
+            <img src={companyThumb} alt="" />
+            Spotify
+          </span>
+          <img src={editIcon} alt="" />
+        </NavLink>
+      </div>
       <div className="postJobBox">
-        <Link className="btnPostJob" to="/postJob">
-          <img src={postJobIcon} alt="" />
-          Post Job
-        </Link>
+        <NavLink className="btnPostJob" to="/company/postJob">
+          <span>
+            <img src={postJobIcon} alt="" />
+            Post Job
+          </span>
+        </NavLink>
       </div>
       <nav className="mainNavGroup">
-        <Link to="/company/dashboard">
-          <img src={dashboardIcon} alt="" />
-          Dashboard
-        </Link>
+        <NavLink activeClassName="isActive" to="/company/dashboard">
+          <span className="mainNavText">
+            <img src={dashboardIcon} alt="" />
+            Dashboard
+          </span>
+        </NavLink>
 
-        <Link to="/company/jobListings">
-          <img src={jobListingsIcon} alt="" />
-          Job Listings
-        </Link>
+        <NavLink to="/company/jobListings">
+          <span className="mainNavText">
+            <img src={jobListingsIcon} alt="" />
+            Job Listings
+          </span>
+          <div className="behaviorBox">
+            <img src={plusIcon} alt="" />
+          </div>
+        </NavLink>
 
-        <Link to="/company/jobListings">
-          <img src={membersIcon} alt="" />
-          Members
-        </Link>
+        <NavLink to="/company/jobListings">
+          <span className="mainNavText">
+            <img src={membersIcon} alt="" />
+            Members
+          </span>
+        </NavLink>
 
-        <Link to="/company/messages">
-          <img src={messagesIcon} alt="" />
-          Messages
-        </Link>
+        <NavLink to="/company/messages">
+          <span className="mainNavText">
+            <img src={messagesIcon} alt="" />
+            Messages
+          </span>
+          <div className="behaviorBox">
+            <span className="mainNavStatus">99+</span>
+          </div>
+        </NavLink>
       </nav>
       <nav className="mainNavGroup">
-        <Link to="/company/dashboard">
-          <img src={teamIcon} alt="" />
-          Team
-        </Link>
+        <NavLink activeClassName="isActive" to="/company/team">
+          <span className="mainNavText">
+            <img src={teamIcon} alt="" />
+            Team
+          </span>
+        </NavLink>
 
-        <Link to="/company/jobListings">
-          <img src={settingsIcon} alt="" />
-          Settings
-        </Link>
+        <NavLink to="/company/jobListings">
+          <span className="mainNavText">
+            <img src={settingsIcon} alt="" />
+            Settings
+          </span>
+        </NavLink>
 
-        <Link to="/company/jobListings">
-          <img src={billingIcon} alt="" />
-          Billing
-        </Link>
+        <NavLink to="/company/jobListings">
+          <span className="mainNavText">
+            <img src={billingIcon} alt="" />
+            Billing
+          </span>
+        </NavLink>
 
-        <Link
+        <NavLink
           to="/"
           onClick={e => {
             e.preventDefault();
@@ -77,7 +112,7 @@ function MainNav() {
           }}
         >
           Logout
-        </Link>
+        </NavLink>
       </nav>
     </MainNavStyle>
   );

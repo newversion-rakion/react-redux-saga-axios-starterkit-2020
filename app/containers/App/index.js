@@ -13,7 +13,6 @@ import { Switch, Route } from 'react-router-dom';
 import CompanyLayout from 'layouts/CompanyLayout';
 import ApplicantLayout from 'layouts/ApplicantLayout';
 import Login from 'containers/Login/Loadable';
-import RouterInterceptor from 'utils/routerInterceptor';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import GlobalStyle from '../../global-styles';
 
@@ -29,8 +28,8 @@ export default function App() {
       <Switch>
         <Route path="/" exact component={Login} />
         <Route path="/login" exact component={Login} />
-        <RouterInterceptor path="/company" component={CompanyLayout} />
-        <RouterInterceptor path="/applicant" component={ApplicantLayout} />
+        <Route path="/company" component={CompanyLayout} />
+        <Route path="/applicant" component={ApplicantLayout} />
         <Route path="" component={NotFoundPage} />
       </Switch>
       <GlobalStyle />
