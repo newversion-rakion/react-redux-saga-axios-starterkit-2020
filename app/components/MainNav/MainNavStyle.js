@@ -5,9 +5,97 @@ const MainNavStyle = styled.div`
   width: 300px;
   min-height: 100vh;
   box-shadow: 4px 0px 16px rgba(0, 0, 0, 0.04);
-  padding: 18px 0;
+  padding: 0;
+  @media screen and (max-width: 769px) {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 998;
+    pointer-events: none;
+    * {
+      pointer-events: initial;
+    }
+  }
+  .btnOpenMainNav {
+    border: 0;
+    padding: 0;
+    background: none;
+    width: 20px;
+    position: fixed;
+    z-index: 997;
+    cursor: pointer;
+    top: 20px;
+    left: 20px;
+    display: none;
+    @media screen and (max-width: 769px) {
+      display: block;
+    }
+    span {
+      width: 100%;
+      display: block;
+      height: 2.5px;
+      background: #333333;
+      border-radius: 3px;
+      & ~ span {
+        margin: 4px 0 0;
+      }
+    }
+  }
+  .btnCloseMainNav {
+    display: none;
+    @media screen and (max-width: 769px) {
+      display: block;
+      position: absolute;
+      top: 24px;
+      right: 30px;
+      cursor: pointer;
+      border: 0;
+      padding: 0;
+      background: none;
+    }
+  }
+  .mainNavOverlay {
+    opacity: 0;
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    transition: all 0.3s ease 0s;
+    display: none;
+    @media screen and (max-width: 769px) {
+      display: block;
+    }
+    &.isOpen {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  .mainNavContent {
+    padding: 18px 0;
+    @media screen and (max-width: 769px) {
+      width: 300px;
+      position: relative;
+      z-index: 999;
+      height: 100vh;
+      overflow-y: scroll;
+      background: #ffffff;
+      transition: all 0.3s ease 0s;
+      transform: translateX(-300px);
+    }
+    &.isOpen {
+      @media screen and (max-width: 769px) {
+        transform: translateX(0);
+      }
+    }
+  }
   .mainLogo {
     padding: 30px;
+    @media screen and (max-width: 769px) {
+      padding: 6px 30px 21px;
+    }
   }
 
   .companyBox {
