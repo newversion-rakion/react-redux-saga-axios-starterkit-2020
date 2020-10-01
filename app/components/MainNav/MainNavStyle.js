@@ -46,6 +46,12 @@ const MainNavStyle = styled.div`
         margin: 0 5px 0 0;
       }
     }
+    span {
+      width: 100%;
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+    }
   }
 
   .mainNavGroup {
