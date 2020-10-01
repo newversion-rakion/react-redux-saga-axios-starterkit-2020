@@ -4,7 +4,12 @@
  *
  */
 import produce from 'immer';
-import { DEFAULT_ACTION, LOGIN } from './constants';
+import {
+  DEFAULT_ACTION,
+  LOGIN_PENDING,
+  LOGIN_SUCCESS,
+  LOGIN_ERROR,
+} from './constants';
 
 export const initialState = {};
 
@@ -14,8 +19,12 @@ const loginReducer = (state = initialState, action) =>
     switch (action.type) {
       case DEFAULT_ACTION:
         break;
-      case LOGIN:
-        return state.set('loading', true).set('error', false);
+      case LOGIN_PENDING:
+        break;
+      case LOGIN_SUCCESS:
+        break;
+      case LOGIN_ERROR:
+        break;
     }
   });
 

@@ -1,18 +1,19 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import PropTypes from 'prop-types';
 import { Link, useHistory } from 'react-router-dom';
 import LoginFormStyle from './LoginFormStyle';
-export default function LoginForm() {
+export default function LoginForm({ onSubmitForm }) {
   const { register, handleSubmit, errors } = useForm();
-  const history = useHistory();
-  const onSubmit = () => {
-    localStorage.setItem('token', 'draftToken');
-    history.push('/company/team');
-  };
+  // const history = useHistory();
+  // const onSubmit = () => {
+  //   localStorage.setItem('token', 'draftToken');
+  //   history.push('/company/team');
+  // };
 
   return (
     <LoginFormStyle>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmitForm)}>
         <div className="form-group">
           <input
             className="form-control"
@@ -47,3 +48,7 @@ export default function LoginForm() {
     </LoginFormStyle>
   );
 }
+
+LoginForm.propTypes = {
+  onSubmitForm: PropTypes.func,
+};

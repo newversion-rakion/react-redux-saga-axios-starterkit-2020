@@ -5,9 +5,9 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
+import PropTypes from 'prop-types';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import Logo from 'components/Logo';
@@ -16,9 +16,11 @@ import { useInjectReducer } from 'utils/injectReducer';
 import LoginForm from './components/LoginForm';
 import makeSelectLogin from './selectors';
 import reducer from './reducer';
+import { login } from './actions';
 import saga from './saga';
 import LoginStyle from './LoginStyle';
-export function Login() {
+
+export function Login(props) {
   useInjectReducer({ key: 'login', reducer });
   useInjectSaga({ key: 'login', saga });
 
@@ -31,7 +33,7 @@ export function Login() {
       <LoginStyle>
         <div className="pageContent">
           <Logo />
-          <LoginForm />
+          <LoginForm onSubmitForm={props.onSubmitForm} />
         </div>
       </LoginStyle>
     </div>
@@ -39,7 +41,7 @@ export function Login() {
 }
 
 Login.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  onSubmitForm: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -49,6 +51,10 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    onSubmitForm: evt => {
+      if (evt !== undefined && evt.preventDefault) evt.preventDefault();
+      dispatch(login());
+    },
   };
 }
 
