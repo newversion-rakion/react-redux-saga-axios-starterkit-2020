@@ -6,6 +6,10 @@ const CompanyLayout = styled.div`
   flex-wrap: wrap;
   .mainPage {
     width: calc(100% - 300px);
+    min-height: 100vh;
+    @media screen and (max-width: 769px) {
+      width: 100%;
+    }
   }
 `;
 
