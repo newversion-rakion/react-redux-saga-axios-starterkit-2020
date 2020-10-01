@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import styled from 'styled-components';
+import * as CSS from 'utils/styleSheetHelpers';
 
 const LoginFormStyle = styled.div`
   border-radius: 8px;
@@ -13,19 +14,19 @@ const LoginFormStyle = styled.div`
     width: 100%;
     height: 52px;
     padding: 5px 16px;
-    font-weight: 600;
+    font-family: ${CSS.FONT600};
     color: #0e142c;
     &::placeholder {
       font-size: 16px;
       color: #8f9299;
-      font-weight: bold;
+      font-family: ${CSS.FONT600};
     }
   }
   .btnSubmit {
     width: 100%;
     display: block;
     font-size: 16px;
-    font-weight: bold;
+    font-family: ${CSS.FONT700};
     color: #ffffff;
     border-radius: 66px;
     text-align: center;
@@ -37,7 +38,7 @@ const LoginFormStyle = styled.div`
     font-size: 12px;
     line-height: 19px;
     text-align: center;
-    font-weight: bold;
+    font-family: ${CSS.FONT700};
     color: #2b75cc;
     padding: 15px 0 20px;
     display: block;
@@ -48,7 +49,7 @@ const LoginFormStyle = styled.div`
     padding: 25px 0 10px;
     text-align: center;
     a {
-      font-weight: bold;
+      font-family: ${CSS.FONT700};
       font-size: 14px;
       text-align: center;
       color: #2B75CC;
