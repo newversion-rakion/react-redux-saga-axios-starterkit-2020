@@ -23,10 +23,22 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
-  p,
-  label {
-    font-family: Georgia, Times, 'Times New Roman', serif;
-    line-height: 1.5em;
+  img {
+    max-width: 100%;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .formError {
+    color: red;
+    display: block;
+    text-align: left;
+    font-size: 12px;
+    padding: 10px 0;
   }
 `;
 
