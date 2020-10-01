@@ -7,7 +7,7 @@
 
 import React, { useState } from 'react';
 // import PropTypes from 'prop-types';
-// import styled from 'styled-components';
+import classNames from 'classnames';
 import Logo from 'components/Logo';
 import { NavLink, useHistory } from 'react-router-dom';
 import dashboardIcon from 'images/icons/mainNav/dashboard.svg';
@@ -42,12 +42,14 @@ function MainNav() {
         <span />
       </button>
       <div
-        className="mainNavOverlay"
+        className={classNames('mainNavOverlay', isOpenMainNav ? 'isOpen' : '')}
         onClick={() => {
           setMainNavState(false);
         }}
       />
-      <div className="mainNavContent">
+      <div
+        className={classNames('mainNavContent', isOpenMainNav ? 'isOpen' : '')}
+      >
         <button
           type="button"
           className="btnCloseMainNav"
