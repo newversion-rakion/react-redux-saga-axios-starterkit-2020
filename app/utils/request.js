@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { store } from 'react-notifications-component';
 import { ROOT_URI, API_TIMEOUT } from './constants';
 
 const instance = axios.create({
@@ -7,7 +8,19 @@ const instance = axios.create({
 });
 
 const handleError = error => {
-  console.log('error in handleError', error);
+  console.log('hihi', error);
+  store.addNotification({
+    title: 'Wonderful!',
+    message: 'teodosii@react-notifications-component',
+    type: 'danger',
+    insert: 'top',
+    container: 'top-right',
+    animationIn: ['animate__animated', 'animate__fadeIn'],
+    animationOut: ['animate__animated', 'animate__fadeOut'],
+    dismiss: {
+      duration: 3000,
+    },
+  });
   return Promise.reject();
 };
 
@@ -23,7 +36,7 @@ const sendRequest = ({ url, method, params, data }) =>
     },
   })
     .then(response => response.data)
-    .catch(error => handleError(error));
+    .catch(error => handleError(error.respond));
 
 export const get = ({ url, params }) =>
   sendRequest({ url, params, method: 'GET' });

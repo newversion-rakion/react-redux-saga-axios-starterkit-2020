@@ -17,7 +17,7 @@ import history from 'utils/history';
 import 'sanitize.css/sanitize.css';
 import 'assets/fonts/stylesheet.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import 'react-notifications-component/dist/theme.css';
 // Import root app
 import App from 'containers/App';
 
