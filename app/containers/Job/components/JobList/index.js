@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import postJobIcon from 'images/icons/job/postJob.svg';
 import jobThumb from 'images/draft/jobThumb.jpg';
 import newApplicantsIcon from 'images/icons/job/newApplicants.svg';
@@ -89,5 +90,10 @@ const JobList = ({ boxTitle, isCurrentJobs }) => (
     </div>
   </JobListStyle>
 );
+
+JobList.propTypes = {
+  boxTitle: PropTypes.string,
+  isCurrentJobs: PropTypes.bool,
+};
 
 export default JobList;

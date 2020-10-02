@@ -1,44 +1,38 @@
-/**
- * Parses the JSON returned by a network request
- *
- * @param  {object} response A response from a network request
- *
- * @return {object}          The parsed JSON from the request
- */
-function parseJSON(response) {
-  if (response.status === 204 || response.status === 205) {
-    return null;
-  }
-  return response.json();
-}
+import axios from 'axios';
+import { ROOT_URI, API_TIMEOUT } from './constants';
 
-/**
- * Checks if a network request came back fine, and throws an error if not
- *
- * @param  {object} response   A response from a network request
- *
- * @return {object|undefined} Returns either the response, or throws an error
- */
-function checkStatus(response) {
-  if (response.status >= 200 && response.status < 300) {
-    return response;
-  }
+const instance = axios.create({
+  baseURL: ROOT_URI,
+  timeout: API_TIMEOUT,
+});
 
-  const error = new Error(response.statusText);
-  error.response = response;
-  throw error;
-}
+const handleError = error => {
+  console.log('error in handleError', error);
+  return Promise.reject();
+};
 
-/**
- * Requests a URL, returning a promise
- *
- * @param  {string} url       The URL we want to request
- * @param  {object} [options] The options we want to pass to "fetch"
- *
- * @return {object}           The response data
- */
-export default function request(url, options) {
-  return fetch(url, options)
-    .then(checkStatus)
-    .then(parseJSON);
-}
+const sendRequest = ({ url, method, params, data }) =>
+  instance({
+    url,
+    method,
+    params,
+    data,
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: localStorage.getItem('token') || '',
+    },
+  })
+    .then(response => response.data)
+    .catch(error => handleError(error));
+
+export const get = ({ url, params }) =>
+  sendRequest({ url, params, method: 'GET' });
+
+export const post = ({ url, params, data }) =>
+  sendRequest({ url, params, data, method: 'POST' });
+
+export const put = ({ url, params, data }) =>
+  sendRequest({ url, params, data, method: 'PUT' });
+
+export const deleteData = ({ url, params, data }) =>
+  sendRequest({ url, params, data, method: 'DELETE' });
