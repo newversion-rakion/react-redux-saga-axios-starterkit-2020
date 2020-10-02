@@ -4,7 +4,7 @@ import { loginSuccess, loginError } from './actions';
 import { LOGIN_PENDING } from './constants';
 
 export function* login(action) {
-  const payload = { url: '/generate_token', params: null, data: action.data };
+  const payload = { url: '/login', params: null, data: action.data };
   try {
     const respond = yield call(Api.post, payload);
     yield put(loginSuccess(respond));
