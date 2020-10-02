@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import messagesIcon from 'images/icons/mainNav/messages.svg';
+import newMessageNotifyIcon from 'images/icons/dashboard/newMessageNotify.svg';
 import teamMemberThumb from 'images/draft/teamMemberThumb.jpg';
 import MessagesStyle from './MessagesStyle';
 
@@ -8,7 +8,7 @@ const Messages = () => {
   return (
     <MessagesStyle>
       <Link className="btnGetNewMessage" to="/">
-        <img src={messagesIcon} alt="" />6 New Messages
+        <img src={newMessageNotifyIcon} alt="" />6 New Messages
       </Link>
 
       <ul className="messageList">

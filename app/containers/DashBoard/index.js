@@ -34,11 +34,11 @@ export function DashBoard() {
                   <h3 className="boxTitle">Job Listings</h3>
                   <Link to="company/job">View All</Link>
                 </div>
-                <div className="boxRow">
-                  <div className="boxCol">
+                <div className="jobListingsBoxRow">
+                  <div className="jobListingsBoxCol">
                     <JobItem />
                   </div>
-                  <div className="boxCol">
+                  <div className="jobListingsBoxCol">
                     <JobItem />
                   </div>
                 </div>
