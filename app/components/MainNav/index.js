@@ -120,14 +120,14 @@ function MainNav() {
           </span>
         </NavLink>
 
-          <NavLink to="/company/jobListings">
+          <NavLink activeClassName="isActive"  to="/company/jobListings">
             <span className="mainNavText">
               <img src={settingsIcon} alt="" />
               Settings
             </span>
           </NavLink>
 
-          <NavLink to="/company/jobListings">
+          <NavLink activeClassName="isActive" to="/company/jobListings">
             <span className="mainNavText">
               <img src={billingIcon} alt="" />
               Billing

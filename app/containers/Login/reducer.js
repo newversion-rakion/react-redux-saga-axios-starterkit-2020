@@ -11,7 +11,10 @@ import {
   LOGIN_ERROR,
 } from './constants';
 
-export const initialState = {};
+export const initialState = {
+  loginData: {},
+  loading: false,
+};
 
 /* eslint-disable default-case, no-param-reassign */
 const loginReducer = (state = initialState, action) =>
@@ -20,11 +23,11 @@ const loginReducer = (state = initialState, action) =>
       case DEFAULT_ACTION:
         break;
       case LOGIN_PENDING:
-        break;
+        return { ...state, loading: true };
       case LOGIN_SUCCESS:
-        break;
+        return { ...state, loginData: action.respond, loading: false };
       case LOGIN_ERROR:
-        break;
+        return { ...state, loading: false };
     }
   });
 

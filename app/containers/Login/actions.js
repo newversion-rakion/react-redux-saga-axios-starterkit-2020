@@ -3,7 +3,7 @@
  * Login actions
  *
  */
-
+import history from 'utils/history';
 import {
   DEFAULT_ACTION,
   LOGIN_PENDING,
@@ -17,16 +17,19 @@ export function defaultAction() {
   };
 }
 
-export function login() {
+export function login(data) {
   return {
     type: LOGIN_PENDING,
+    data,
   };
 }
 
-export function loginSuccess(token) {
+export function loginSuccess(respond) {
+  localStorage.setItem('token', respond.data);
+  history.push('/company/dashBoard');
   return {
     type: LOGIN_SUCCESS,
-    token,
+    respond,
   };
 }
 

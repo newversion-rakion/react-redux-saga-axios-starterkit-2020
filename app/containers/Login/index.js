@@ -13,6 +13,7 @@ import { compose } from 'redux';
 import Logo from 'components/Logo';
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
+import Loading from 'components/Loading';
 import LoginForm from './components/LoginForm';
 import makeSelectLogin from './selectors';
 import reducer from './reducer';
@@ -23,13 +24,13 @@ import LoginStyle from './LoginStyle';
 export function Login(props) {
   useInjectReducer({ key: 'login', reducer });
   useInjectSaga({ key: 'login', saga });
-
   return (
     <div>
       <Helmet>
         <title>Login</title>
         <meta name="description" content="Login Page" />
       </Helmet>
+      <Loading loading={props.login.loading} />
       <LoginStyle>
         <div className="pageContent">
           <Logo />
@@ -42,6 +43,7 @@ export function Login(props) {
 
 Login.propTypes = {
   onSubmitForm: PropTypes.func,
+  login: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -51,9 +53,9 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
-    onSubmitForm: evt => {
-      if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-      dispatch(login());
+    onSubmitForm: data => {
+      if (data !== undefined && data.preventDefault) data.preventDefault();
+      dispatch(login(data));
     },
   };
 }
