@@ -16,6 +16,10 @@ const schema = yup.object().shape({
 
 export default function LoginForm({ onSubmitForm }) {
   const { register, handleSubmit, errors } = useForm({
+    reValidateMode: 'onChange',
+    shouldFocusError: true,
+    shouldUnregister: true,
+    defaultValues: {},
     resolver: yupResolver(schema),
   });
   return (
