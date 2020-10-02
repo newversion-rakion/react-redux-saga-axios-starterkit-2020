@@ -95,7 +95,7 @@ function MainNav() {
           </div>
         </NavLink>
 
-        <NavLink activeClassName="isActive" to="/company/jobListings">
+        <NavLink activeClassName="isActive" to="/company/member">
           <span className="mainNavText">
             <img src={membersIcon} alt="" />
             Members
@@ -120,14 +120,14 @@ function MainNav() {
           </span>
         </NavLink>
 
-          <NavLink activeClassName="isActive"  to="/company/jobListings">
+          <NavLink activeClassName="isActive"  to="/company/settings">
             <span className="mainNavText">
               <img src={settingsIcon} alt="" />
               Settings
             </span>
           </NavLink>
 
-          <NavLink activeClassName="isActive" to="/company/jobListings">
+          <NavLink activeClassName="isActive" to="/company/billing">
             <span className="mainNavText">
               <img src={billingIcon} alt="" />
               Billing
