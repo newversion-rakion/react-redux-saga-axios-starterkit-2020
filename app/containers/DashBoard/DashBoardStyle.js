@@ -11,14 +11,6 @@ const DashBoardStyle = styled.div`
     flex-wrap: wrap;
     margin: 0 -30px;
   }
-  .jobListingsBox {
-    padding: 0 30px;
-    width: calc(100% - 420px);
-  }
-  .messagesBox {
-    padding: 0 30px;
-    width: 420px;
-  }
   .jobListingsBoxRow {
     display: flex;
     flex-wrap: nowrap;

@@ -2,8 +2,12 @@ import styled from 'styled-components';
 import * as CSS from 'utils/styleSheetHelpers';
 
 const MessagesStyle = styled.div`
-  width: 100%;
-  margin: 0 0 45px;
+  padding: 0 30px;
+  width: 420px;
+  .messagesBoxContent {
+    width: 100%;
+    margin: 0 0 45px;
+  }
   .btnGetNewMessage {
     display: flex;
     align-items: center;

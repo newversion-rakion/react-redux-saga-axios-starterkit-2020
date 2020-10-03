@@ -27,6 +27,7 @@ export function* invite(action) {
   try {
     const respond = yield call(Api.post, payload);
     yield put(inviteSuccess(respond));
+    yield put({ type: GET_TEAM_PENDING });
   } catch (err) {
     yield put(inviteError(err));
   }
@@ -55,8 +56,9 @@ export function* cancelInvite(action) {
     apiName: 'cancel invite',
   };
   try {
-    const respond = yield call(Api.post, payload);
+    const respond = yield call(Api.deleteData, payload);
     yield put(cancelInviteSuccess(respond));
+    yield put({ type: GET_TEAM_PENDING });
   } catch (err) {
     yield put(cancelInviteError(err));
   }

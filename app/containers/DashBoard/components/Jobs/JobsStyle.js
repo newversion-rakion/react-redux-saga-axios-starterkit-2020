@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 import * as CSS from 'utils/styleSheetHelpers';
 
-const JobItemStyle = styled.div`
-  width: 100%;
-  margin: 0 0 45px;
+const JobsStyle = styled.div`
+  padding: 0 30px;
+  width: calc(100% - 420px);
+  .jobBoxContent {
+    width: 100%;
+    margin: 0 0 45px;
+  }
   .item {
     box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.12);
     border-radius: 8px;
@@ -83,4 +87,4 @@ const JobItemStyle = styled.div`
   }
 `;
 
-export default JobItemStyle;
+export default JobsStyle;

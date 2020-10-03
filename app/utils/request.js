@@ -19,7 +19,7 @@ const handleSuccess = (respond, apiName) => {
       animationIn: ['animate__animated', 'animate__fadeIn'],
       animationOut: ['animate__animated', 'animate__fadeOut'],
       dismiss: {
-        duration: 3000,
+        duration: 2000,
       },
     });
   }
@@ -27,12 +27,14 @@ const handleSuccess = (respond, apiName) => {
 };
 
 const handleError = (error, apiName) => {
-  let message = `${apiName} is failed`;
+  let message = `Something wen't wrong`;
   if (error.response) {
     if (error.response.data) {
       message = error.response.data.error || error.response.data.message;
     }
   }
+
+  message = `${apiName} is failed`;
 
   store.addNotification({
     message,
@@ -42,7 +44,7 @@ const handleError = (error, apiName) => {
     animationIn: ['animate__animated', 'animate__fadeIn'],
     animationOut: ['animate__animated', 'animate__fadeOut'],
     dismiss: {
-      duration: 3000,
+      duration: 2000,
     },
   });
   return Promise.reject(error);
