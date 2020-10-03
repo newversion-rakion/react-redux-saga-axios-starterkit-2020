@@ -138,7 +138,7 @@ function MainNav() {
             to="/"
             onClick={e => {
               e.preventDefault();
-              sessionStorage.clear();
+              localStorage.clear();
               history.push('/login');
             }}
           >

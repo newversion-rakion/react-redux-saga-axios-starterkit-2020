@@ -9,8 +9,8 @@ const MemberInvitationForm = ({ onSubmitForm }) => {
   const schema = yup.object().shape({
     email: yup
       .string()
-      .email()
-      .required(),
+      .email('This field must be a valid email')
+      .required('Email is required'),
   });
 
   const { register, handleSubmit, errors, formState } = useForm({

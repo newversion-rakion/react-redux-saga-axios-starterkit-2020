@@ -9,9 +9,9 @@ import LoginFormStyle from './LoginFormStyle';
 const schema = yup.object().shape({
   auth_email: yup
     .string()
-    .email()
-    .required(),
-  password: yup.string().required(),
+    .email('This field must be a valid email')
+    .required('Email is required'),
+  password: yup.string().required('Password is required'),
 });
 
 export default function LoginForm({ onSubmitForm }) {
