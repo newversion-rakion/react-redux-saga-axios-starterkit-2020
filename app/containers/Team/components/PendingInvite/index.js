@@ -1,53 +1,48 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import PendingInviteStyle from './PendingInviteStyle';
-const PendingInvite = () => (
+
+const PendingInvite = ({ pendingInviteList, cancelInvite, resendInvite }) => (
   <PendingInviteStyle>
-    <h3 className="boxTitle">Pending Invites (3)</h3>
+    <h3 className="boxTitle">Pending Invites ({pendingInviteList.length})</h3>
     <ul className="pendingList">
-      <li>
-        <div className="info">
-          <h4 className="name">Johnny Rockets</h4>
-          <p className="email">j.rockets@spotify.com</p>
-        </div>
-        <div className="behavior">
-          <button type="button" className="btn">
-            Cancel
-          </button>
-          <button type="button" className="btn btn-primary btnResend">
-            Resend
-          </button>
-        </div>
-      </li>
-      <li>
-        <div className="info">
-          <h4 className="name">Dale Washington</h4>
-          <p className="email">d.washington@spotify.com</p>
-        </div>
-        <div className="behavior">
-          <button type="button" className="btn btnCancel">
-            Cancel
-          </button>
-          <button type="button" className="btn btn-primary btnResend">
-            Resend
-          </button>
-        </div>
-      </li>
-      <li>
-        <div className="info">
-          <h4 className="name">Ernie Jackson</h4>
-          <p className="email">e.jackson@spotify.com</p>
-        </div>
-        <div className="behavior">
-          <button type="button" className="btn btnCancel">
-            Cancel
-          </button>
-          <button type="button" className="btn btn-primary btnResend">
-            Resend
-          </button>
-        </div>
-      </li>
+      {pendingInviteList &&
+        pendingInviteList.map(user => (
+          <li key={user.id}>
+            <div className="info">
+              <h4 className="name">{user.name}</h4>
+              <p className="email">{user.email}</p>
+            </div>
+            <div className="behavior">
+              <button
+                type="button"
+                className="btn"
+                onClick={() => {
+                  cancelInvite(user.id);
+                }}
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                className="btn btn-primary btnResend"
+                onClick={() => {
+                  resendInvite(user.id);
+                }}
+              >
+                Resend
+              </button>
+            </div>
+          </li>
+        ))}
     </ul>
   </PendingInviteStyle>
 );
+
+PendingInvite.propTypes = {
+  pendingInviteList: PropTypes.array,
+  cancelInvite: PropTypes.func,
+  resendInvite: PropTypes.func,
+};
 
 export default PendingInvite;

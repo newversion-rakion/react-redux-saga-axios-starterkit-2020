@@ -18,7 +18,9 @@ const UserBox = () => {
               <img src={changeUserAvt} alt="" />
             </div>
           </div>
-          <span>Welcome, Ryan!</span>
+          <span>
+            Welcome, {JSON.parse(localStorage.getItem('user_info')).userName}!
+          </span>
         </Link>
       </div>
       <div className="userBoxRight">

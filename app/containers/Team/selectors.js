@@ -1,12 +1,10 @@
 import { createSelector } from 'reselect';
 import { initialState } from './reducer';
-
 /**
  * Direct selector to the team state domain
  */
 
 const selectTeamDomain = state => state.team || initialState;
-
 /**
  * Other specific selectors
  */

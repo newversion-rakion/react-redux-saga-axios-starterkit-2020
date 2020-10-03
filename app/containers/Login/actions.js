@@ -26,6 +26,7 @@ export function login(data) {
 
 export function loginSuccess(respond) {
   localStorage.setItem('token', respond.token);
+  localStorage.setItem('user_info', JSON.stringify(respond.user_info));
   history.push('/company/dashBoard');
   return {
     type: LOGIN_SUCCESS,
