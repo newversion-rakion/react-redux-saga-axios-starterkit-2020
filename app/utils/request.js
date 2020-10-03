@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { store } from 'react-notifications-component';
 import { ROOT_URI, API_TIMEOUT } from './constants';
 
 const instance = axios.create({
@@ -6,12 +7,48 @@ const instance = axios.create({
   timeout: API_TIMEOUT,
 });
 
-const handleError = error => {
-  console.log('error in handleError', error);
-  return Promise.reject();
+const handleSuccess = (respond, apiName) => {
+  if (apiName) {
+    const message = `${apiName} is succeed`;
+
+    store.addNotification({
+      message,
+      type: 'success',
+      insert: 'top',
+      container: 'top-right',
+      animationIn: ['animate__animated', 'animate__fadeIn'],
+      animationOut: ['animate__animated', 'animate__fadeOut'],
+      dismiss: {
+        duration: 3000,
+      },
+    });
+  }
+  return Promise.resolve(respond);
 };
 
-const sendRequest = ({ url, method, params, data }) =>
+const handleError = (error, apiName) => {
+  let message = `${apiName} is failed`;
+  if (error.response) {
+    if (error.response.data) {
+      message = error.response.data.error || error.response.data.message;
+    }
+  }
+
+  store.addNotification({
+    message,
+    type: 'danger',
+    insert: 'top',
+    container: 'top-right',
+    animationIn: ['animate__animated', 'animate__fadeIn'],
+    animationOut: ['animate__animated', 'animate__fadeOut'],
+    dismiss: {
+      duration: 3000,
+    },
+  });
+  return Promise.reject(error);
+};
+
+const sendRequest = ({ url, method, params, data, apiName = '' }) =>
   instance({
     url,
     method,
@@ -22,17 +59,17 @@ const sendRequest = ({ url, method, params, data }) =>
       Authorization: localStorage.getItem('token') || '',
     },
   })
-    .then(response => response.data)
-    .catch(error => handleError(error));
+    .then(response => handleSuccess(response.data, apiName))
+    .catch(error => handleError(error, apiName));
 
-export const get = ({ url, params }) =>
-  sendRequest({ url, params, method: 'GET' });
+export const get = ({ url, params, apiName }) =>
+  sendRequest({ url, params, method: 'GET', apiName });
 
-export const post = ({ url, params, data }) =>
-  sendRequest({ url, params, data, method: 'POST' });
+export const post = ({ url, params, data, apiName }) =>
+  sendRequest({ url, params, data, method: 'POST', apiName });
 
-export const put = ({ url, params, data }) =>
-  sendRequest({ url, params, data, method: 'PUT' });
+export const put = ({ url, params, data, apiName }) =>
+  sendRequest({ url, params, data, method: 'PUT', apiName });
 
-export const deleteData = ({ url, params, data }) =>
-  sendRequest({ url, params, data, method: 'DELETE' });
+export const deleteData = ({ url, params, data, apiName }) =>
+  sendRequest({ url, params, data, method: 'DELETE', apiName });

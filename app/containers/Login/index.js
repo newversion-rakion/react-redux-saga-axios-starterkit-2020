@@ -52,11 +52,11 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
     onSubmitForm: data => {
       if (data !== undefined && data.preventDefault) data.preventDefault();
       dispatch(login(data));
     },
+    dispatch,
   };
 }
 

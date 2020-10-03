@@ -9,7 +9,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Switch, Route } from 'react-router-dom';
-
+import ReactNotification from 'react-notifications-component'
 import CompanyLayout from 'layouts/CompanyLayout';
 import ApplicantLayout from 'layouts/ApplicantLayout';
 import Login from 'containers/Login/Loadable';
@@ -25,6 +25,7 @@ export default function App() {
       >
         <meta name="description" content="Mixer, The Creative Network" />
       </Helmet>
+      <ReactNotification />
       <Switch>
         <Route path="/" exact component={Login} />
         <Route path="/login" exact component={Login} />

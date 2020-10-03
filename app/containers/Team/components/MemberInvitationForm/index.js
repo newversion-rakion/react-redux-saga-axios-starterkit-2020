@@ -1,34 +1,55 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import PropTypes from 'prop-types';
+import { yupResolver } from '@hookform/resolvers';
+import * as yup from 'yup';
 import MemberInvitationFormStyle from './MemberInvitationFormStyle';
 
-const MemberInvitationForm = () => {
-  const { register, handleSubmit, errors } = useForm();
-  const onSubmit = value => {
-    console.log(value);
-  };
+const MemberInvitationForm = ({ onSubmitForm }) => {
+  const schema = yup.object().shape({
+    email: yup
+      .string()
+      .email()
+      .required(),
+  });
+
+  const { register, handleSubmit, errors, formState } = useForm({
+    mode: 'onChange',
+    shouldFocusError: true,
+    shouldUnregister: true,
+    defaultValues: {},
+    resolver: yupResolver(schema),
+  });
+
+  const { isValid } = formState;
 
   return (
     <MemberInvitationFormStyle>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmitForm)}>
         <div className="form-group">
           <input
             className="form-control"
-            name="company_invite"
+            name="email"
             placeholder="Enter team member’s email address"
             type="text"
-            ref={register({ required: true })}
+            ref={register}
           />
-          {errors.company_invite && (
-            <span className="formError">This field is required</span>
+          {errors.email && (
+            <span className="formError">{errors.email.message}</span>
           )}
-          <button type="submit" className="btn btn-primary btnSubmit">
-            Send
-          </button>
+          {isValid && (
+            <button type="submit" className="btn btn-primary btnSubmit">
+              Send
+            </button>
+          )}
         </div>
       </form>
     </MemberInvitationFormStyle>
   );
+};
+
+MemberInvitationForm.propTypes = {
+  onSubmitForm: PropTypes.func,
 };
 
 export default MemberInvitationForm;
