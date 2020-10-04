@@ -33,6 +33,7 @@ const EmptyJobBoxStyle = styled.div`
     color: #000000;
     margin: 0 0 50px;
   }
+
   .btnCreateJob {
     color: #ffffff;
     background: #2b75cc;
