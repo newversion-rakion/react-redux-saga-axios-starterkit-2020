@@ -1,43 +1,23 @@
 import { call, put, takeLatest, all } from 'redux-saga/effects';
 import * as Api from 'utils/request';
-import {
-  getJobsSuccess,
-  getJobsError,
-  getMessagesSuccess,
-  getMessagesError,
-} from './actions';
-import { GET_JOBS_PENDING, GET_MESSAGES_PENDING } from './constants';
+import { getDashboardSuccess, getDashboardError } from './actions';
+import { GET_DASHBOARD_PENDING } from './constants';
 
-export function* getJobs() {
+export function* getDashboard() {
   const payload = {
-    url: '/jobs',
+    url: '/dashboard',
     params: null,
-    apiName: 'get jobs',
+    apiName: 'get dashboard data',
   };
   try {
     const respond = yield call(Api.get, payload);
-    yield put(getJobsSuccess(respond));
+    yield put(getDashboardSuccess(respond));
   } catch (err) {
-    yield put(getJobsError(err));
-  }
-}
-
-export function* getMessages() {
-  const payload = {
-    url: '/messages',
-    params: null,
-    apiName: 'get messages',
-  };
-  try {
-    const respond = yield call(Api.get, payload);
-    yield put(getMessagesSuccess(respond));
-  } catch (err) {
-    yield put(getMessagesError(err));
+    yield put(getDashboardError(err));
   }
 }
 
 // watching...
 export default function* watchAll() {
-  yield all([takeLatest(GET_JOBS_PENDING, getJobs)]);
-  yield all([takeLatest(GET_MESSAGES_PENDING, getMessages)]);
+  yield all([takeLatest(GET_DASHBOARD_PENDING, getDashboard)]);
 }

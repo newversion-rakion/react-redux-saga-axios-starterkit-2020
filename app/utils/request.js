@@ -27,7 +27,7 @@ const handleSuccess = (respond, apiName) => {
 };
 
 const handleError = (error, apiName) => {
-  let message = `Something wen't wrong`;
+  let message = `Something went wrong`;
   if (error.response) {
     if (error.response.data) {
       message = error.response.data.error || error.response.data.message;

@@ -3,6 +3,7 @@ import { Switch } from 'react-router-dom';
 import DashBoard from 'containers/DashBoard/Loadable';
 import Team from 'containers/Team/Loadable';
 import Job from 'containers/Job/Loadable';
+import Messages from 'containers/Messages/Loadable';
 import MainNav from 'components/MainNav/Loadable';
 import RouterInterceptor from 'utils/routerInterceptor';
 import CompanyLayoutStyle from './CompanyLayoutStyle';
@@ -16,6 +17,7 @@ const CompanyLayout = () => (
         <RouterInterceptor path="/company/dashboard" component={DashBoard} />
         <RouterInterceptor path="/company/team" component={Team} />
         <RouterInterceptor path="/company/job" component={Job} />
+        <RouterInterceptor path="/company/messages" component={Messages} />
       </Switch>
     </main>
   </CompanyLayoutStyle>

@@ -9,7 +9,7 @@ import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
 import makeSelectDashBoard from './selectors';
 import reducer from './reducer';
-import { getJobs, getMessages } from './actions';
+import { getDashboard } from './actions';
 import saga from './saga';
 import DashBoardStyle from './DashBoardStyle';
 import Jobs from './components/Jobs';
@@ -21,8 +21,7 @@ export function DashBoard(props) {
   useInjectSaga({ key: 'dashBoard', saga });
 
   useEffect(() => {
-    props.getJobs();
-    props.getMessages();
+    props.getDashboard();
   }, []);
   return (
     <div>
@@ -37,7 +36,10 @@ export function DashBoard(props) {
           <div className="mainBox">
             <div className="mainBoxRow">
               <Jobs jobs={props.dashBoard.jobs} />
-              <Messages messages={props.dashBoard.messages} />
+              <Messages
+                unreadMessagesCount={props.dashBoard.unreadMessagesCount}
+                messages={props.dashBoard.messages}
+              />
             </div>
           </div>
         </div>
@@ -54,8 +56,8 @@ DashBoard.propTypes = {
   dashBoard: PropTypes.object,
   messages: PropTypes.array,
   jobs: PropTypes.array,
-  getJobs: PropTypes.func,
-  getMessages: PropTypes.func,
+  unreadMessagesCount: PropTypes.number,
+  getDashboard: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -64,8 +66,7 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    getJobs: () => dispatch(getJobs()),
-    getMessages: () => dispatch(getMessages()),
+    getDashboard: () => dispatch(getDashboard()),
     dispatch,
   };
 }

@@ -9,10 +9,14 @@ const JobsStyle = styled.div`
     margin: 0 0 45px;
   }
   .item {
-    box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.12);
     border-radius: 8px;
     overflow: hidden;
     margin: 0 0 24px;
+    box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.12);
+    transition: all 0.3s ease 0s;
+    &:hover {
+      box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.3);
+    }
   }
   .thumb {
     img {
@@ -29,6 +33,22 @@ const JobsStyle = styled.div`
       line-height: 19px;
       color: #0e142c;
       font-family: ${CSS.FONT700};
+    }
+  }
+  .time {
+    padding: 0 0 0 15px;
+    position: relative;
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 6px;
+      top: 6px;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: #8f9299;
+      margin: 0 7px 0 0;
     }
   }
   .createdDate {
@@ -69,6 +89,10 @@ const JobsStyle = styled.div`
     padding: 19px 15px;
     box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.12);
     border-radius: 8px;
+    transition: all 0.3s ease 0s;
+    &:hover {
+      box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.3);
+    }
     span {
       display: flex;
       align-items: center;
@@ -83,6 +107,34 @@ const JobsStyle = styled.div`
       img {
         margin: 0 8px 0 0;
       }
+    }
+  }
+  .jobEmptyBox {
+    padding: 0 20px;
+    width: 100%;
+    margin: 0 0 45px;
+  }
+  .jobEmptyBoxItem {
+    height: 384px;
+    width: 100%;
+    background: #f5f9fc;
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    div {
+      text-align: center;
+    }
+    span {
+      display: block;
+      font-size: 20px;
+      line-height: 27px;
+      color: #b8c8d9;
+      width: 100%;
+      margin: 23px 0 0;
+      font-family: ${CSS.FONT700};
     }
   }
 `;

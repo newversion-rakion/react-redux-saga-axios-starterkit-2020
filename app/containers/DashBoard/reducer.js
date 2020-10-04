@@ -6,18 +6,17 @@
 import produce from 'immer';
 import {
   DEFAULT_ACTION,
-  GET_JOBS_PENDING,
-  GET_JOBS_SUCCESS,
-  GET_JOBS_ERROR,
-  GET_MESSAGES_PENDING,
-  GET_MESSAGES_SUCCESS,
-  GET_MESSAGES_ERROR,
+  GET_DASHBOARD_PENDING,
+  GET_DASHBOARD_SUCCESS,
+  GET_DASHBOARD_ERROR,
 } from './constants';
 
 export const initialState = {
   loading: false,
   jobs: [],
   messages: [],
+  unreadMessagesCount: 0,
+  dashboard: {},
 };
 
 /* eslint-disable default-case, no-param-reassign */
@@ -26,21 +25,18 @@ const dashBoardReducer = (state = initialState, action) =>
     switch (action.type) {
       case DEFAULT_ACTION:
         break;
-      case GET_JOBS_PENDING:
+      case GET_DASHBOARD_PENDING:
         return { ...state, loading: true };
-      case GET_JOBS_SUCCESS:
-        return { ...state, jobs: action.respond.data.jobs, loading: false };
-      case GET_JOBS_ERROR:
-        return { ...state, loading: false };
-      case GET_MESSAGES_PENDING:
-        return { ...state, loading: true };
-      case GET_MESSAGES_SUCCESS:
+      case GET_DASHBOARD_SUCCESS:
         return {
           ...state,
-          messages: action.respond.data.messages,
+          jobs: action.respond.data.jobs,
+          messages: action.respond.data.list_messages.messages,
+          unreadMessagesCount:
+            action.respond.data.list_messages.unread_messages_count,
           loading: false,
         };
-      case GET_MESSAGES_ERROR:
+      case GET_DASHBOARD_ERROR:
         return { ...state, loading: false };
     }
   });

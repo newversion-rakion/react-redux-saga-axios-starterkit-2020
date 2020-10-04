@@ -6,12 +6,9 @@
 
 import {
   DEFAULT_ACTION,
-  GET_JOBS_PENDING,
-  GET_JOBS_SUCCESS,
-  GET_JOBS_ERROR,
-  GET_MESSAGES_PENDING,
-  GET_MESSAGES_SUCCESS,
-  GET_MESSAGES_ERROR,
+  GET_DASHBOARD_PENDING,
+  GET_DASHBOARD_SUCCESS,
+  GET_DASHBOARD_ERROR,
 } from './constants';
 
 export function defaultAction() {
@@ -20,42 +17,22 @@ export function defaultAction() {
   };
 }
 
-export function getJobs() {
+export function getDashboard() {
   return {
-    type: GET_JOBS_PENDING,
+    type: GET_DASHBOARD_PENDING,
   };
 }
 
-export function getJobsSuccess(respond) {
+export function getDashboardSuccess(respond) {
   return {
-    type: GET_JOBS_SUCCESS,
+    type: GET_DASHBOARD_SUCCESS,
     respond,
   };
 }
 
-export function getJobsError(error) {
+export function getDashboardError(error) {
   return {
-    type: GET_JOBS_ERROR,
-    error,
-  };
-}
-
-export function getMessages() {
-  return {
-    type: GET_MESSAGES_PENDING,
-  };
-}
-
-export function getMessagesSuccess(respond) {
-  return {
-    type: GET_MESSAGES_SUCCESS,
-    respond,
-  };
-}
-
-export function getMessagesError(error) {
-  return {
-    type: GET_MESSAGES_ERROR,
+    type: GET_DASHBOARD_ERROR,
     error,
   };
 }
