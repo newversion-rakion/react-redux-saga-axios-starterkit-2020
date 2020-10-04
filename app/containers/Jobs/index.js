@@ -12,38 +12,45 @@ import { compose } from 'redux';
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
 import Loading from 'components/Loading';
+import EmptyJobBox from './components/EmptyJobBox';
 import { getJobs } from './actions';
 import JobList from './components/JobList';
 import makeSelectJob from './selectors';
 import JobStyle from './JobStyle';
 import reducer from './reducer';
 import saga from './saga';
-export function Job(props) {
-  useInjectReducer({ key: 'job', reducer });
-  useInjectSaga({ key: 'job', saga });
+export function Jobs(props) {
+  useInjectReducer({ key: 'jobs', reducer });
+  useInjectSaga({ key: 'jobs', saga });
   useEffect(() => {
     props.getJobs();
   }, []);
+
   return (
     <>
-      <Loading loading={props.job.loading} />
+      <Loading loading={props.jobs.loading} />
+      {props.jobs.jobList.length === 0 && <EmptyJobBox />}
       <JobStyle>
         <div className="pageContent">
-          <JobList boxTitle="Current Jobs" isCurrentJobs />
-          <JobList boxTitle="Marked as Hired" />
+          {props.jobs.jobList.length > 0 && (
+            <>
+              <JobList boxTitle="Current Jobs" isCurrentJobs />
+              <JobList boxTitle="Marked as Hired" />
+            </>
+          )}
         </div>
       </JobStyle>
     </>
   );
 }
 
-Job.propTypes = {
-  job: PropTypes.object,
+Jobs.propTypes = {
+  jobs: PropTypes.object,
   getJobs: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
-  job: makeSelectJob(),
+  jobs: makeSelectJob(),
 });
 
 function mapDispatchToProps(dispatch) {
@@ -58,4 +65,4 @@ const withConnect = connect(
   mapDispatchToProps,
 );
 
-export default compose(withConnect)(Job);
+export default compose(withConnect)(Jobs);

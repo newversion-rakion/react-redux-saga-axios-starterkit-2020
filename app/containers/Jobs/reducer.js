@@ -13,11 +13,11 @@ import {
 
 export const initialState = {
   loading: false,
-  jobs: [],
+  jobList: [],
 };
 
 /* eslint-disable default-case, no-param-reassign */
-const jobReducer = (state = initialState, action) =>
+const jobsReducer = (state = initialState, action) =>
   produce(state, (/* draft */) => {
     switch (action.type) {
       case DEFAULT_ACTION:
@@ -25,10 +25,10 @@ const jobReducer = (state = initialState, action) =>
       case GET_JOBS_PENDING:
         return { ...state, loading: true };
       case GET_JOBS_SUCCESS:
-        return { ...state, jobs: action.respond.data.jobs, loading: false };
+        return { ...state, jobList: action.respond.data.jobs, loading: false };
       case GET_JOBS_ERROR:
         return { ...state, loading: false };
     }
   });
 
-export default jobReducer;
+export default jobsReducer;

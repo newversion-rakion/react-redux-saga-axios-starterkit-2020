@@ -12,7 +12,7 @@ const Jobs = ({ jobs }) => (
   <JobsStyle>
     <div className="upperBox">
       <h3 className="boxTitle">Job Listings</h3>
-      {jobs.length > 0 && <Link to="/company/job">View All</Link>}
+      {jobs.length > 0 && <Link to="/company/jobs">View All</Link>}
     </div>
     <div className="jobListingsBoxRow">
       {jobs.length === 0 && (

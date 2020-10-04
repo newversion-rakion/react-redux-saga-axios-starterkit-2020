@@ -24,7 +24,7 @@ const UserBox = () => {
         </Link>
       </div>
       <div className="userBoxRight">
-        <Link className="btnPostNewJob" to="/company/job/create">
+        <Link className="btnPostNewJob" to="/company/jobs/create">
           <img src={postNewJobIcon} alt="" />
           Post New Job
         </Link>
