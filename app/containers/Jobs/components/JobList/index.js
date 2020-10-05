@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Icon from 'components/Icon';
 import postJobIcon from 'images/icons/job/postJob.svg';
 import jobThumb from 'images/draft/jobThumb.jpg';
 import newApplicantsIcon from 'images/icons/job/newApplicants.svg';
@@ -19,7 +20,7 @@ const JobList = ({ boxTitle, isCurrentJobs }) => (
       <div className="behaviorBox">
         {isCurrentJobs && (
           <Link to="/">
-            <img src={postJobIcon} alt="" />
+            <Icon src={postJobIcon} alt="" />
             Post New Job
           </Link>
         )}
@@ -61,26 +62,26 @@ const JobList = ({ boxTitle, isCurrentJobs }) => (
               {isCurrentJobs && (
                 <li>
                   <Link to="/">
-                    <img src={newApplicantsIcon} alt="" />6 New Applicants
+                    <Icon src={newApplicantsIcon} alt="" />6 New Applicants
                   </Link>
                 </li>
               )}
               <li>
                 <Link to="/">
-                  <img src={applicantIcon} alt="" />
+                  <Icon src={applicantIcon} alt="" />
                   104 Applicants
                 </Link>
               </li>
 
               <li>
                 <Link to="/">
-                  <img src={starredIcon} alt="" />3 Starred
+                  <Icon src={starredIcon} alt="" />3 Starred
                 </Link>
               </li>
 
               <li>
                 <Link to="/">
-                  <img src={notesIcon} alt="" />2 Notes
+                  <Icon src={notesIcon} alt="" />2 Notes
                 </Link>
               </li>
             </ul>

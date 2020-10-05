@@ -19,7 +19,8 @@ const JobsStyle = styled.div`
     }
   }
   .thumb {
-    img {
+    img,
+    object {
       width: 100%;
     }
   }
@@ -78,7 +79,8 @@ const JobsStyle = styled.div`
     line-height: 15px;
     font-family: ${CSS.FONT700};
     color: #2b75cc;
-    img {
+    img,
+    object {
       margin: 0 6px 0 0;
     }
   }
@@ -92,6 +94,9 @@ const JobsStyle = styled.div`
     transition: all 0.3s ease 0s;
     &:hover {
       box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.3);
+      object {
+        filter: ${CSS.FILTER_BLUE};
+      }
     }
     span {
       display: flex;
@@ -104,7 +109,8 @@ const JobsStyle = styled.div`
         font-family: ${CSS.FONT700};
         color: #2b75cc;
       }
-      img {
+      img,
+      object {
         margin: 0 8px 0 0;
       }
     }

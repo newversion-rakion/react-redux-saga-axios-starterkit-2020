@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import Icon from 'components/Icon';
 import ShortcutsStyle from './ShortcutsStyle';
 import shortcutList from './data';
 
@@ -14,7 +15,7 @@ const Shortcuts = () => (
             <div key={i} className="shortcutsBoxCol">
               <NavLink className="btnEditCompany" to={item.path}>
                 <div className="shortcutThumb">
-                  <img src={item.thumb} alt="" />
+                  <Icon src={item.thumb} />
                 </div>
                 <span>
                   <strong>{item.mainNav}</strong>

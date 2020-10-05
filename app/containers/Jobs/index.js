@@ -29,17 +29,15 @@ export function Jobs(props) {
   return (
     <>
       <Loading loading={props.jobs.loading} />
-      {props.jobs.jobList.length === 0 && <EmptyJobBox />}
-      <JobStyle>
-        <div className="pageContent">
-          {props.jobs.jobList.length > 0 && (
-            <>
-              <JobList boxTitle="Current Jobs" isCurrentJobs />
-              <JobList boxTitle="Marked as Hired" />
-            </>
-          )}
-        </div>
-      </JobStyle>
+      {props.jobs.jobList && props.jobs.jobList.length === 0 && <EmptyJobBox />}
+      {props.jobs.jobList && props.jobs.jobList.length > 0 && (
+        <JobStyle>
+          <div className="pageContent">
+            <JobList boxTitle="Current Jobs" isCurrentJobs />
+            <JobList boxTitle="Marked as Hired" />
+          </div>
+        </JobStyle>
+      )}
     </>
   );
 }

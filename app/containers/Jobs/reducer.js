@@ -13,7 +13,6 @@ import {
 
 export const initialState = {
   loading: false,
-  jobList: [],
 };
 
 /* eslint-disable default-case, no-param-reassign */

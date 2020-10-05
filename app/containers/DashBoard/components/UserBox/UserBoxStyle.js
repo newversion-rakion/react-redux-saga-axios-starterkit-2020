@@ -4,13 +4,13 @@ import * as CSS from 'utils/styleSheetHelpers';
 const UserBoxStyle = styled.div`
   width: 100%;
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   padding: 30px 0 35px;
   .btnToSettings {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     align-items: center;
     font-family: ${CSS.FONT700};
     font-size: 24px;
@@ -45,6 +45,11 @@ const UserBoxStyle = styled.div`
       height: 24px;
       overflow: hidden;
       border-radius: 50%;
+      &:hover {
+        object {
+          filter: ${CSS.FILTER_BLACK};
+        }
+      }
     }
   }
   .btnPostNewJob {
@@ -56,9 +61,13 @@ const UserBoxStyle = styled.div`
     color: #ffffff;
     background: #2b75cc;
     border-radius: 50px;
-    padding: 13px 21px;
-    img {
-      margin: 0 8px 0 0;
+    padding: 8px 20px;
+    max-width: 165px;
+    max-height: 45px;
+    img,
+    object {
+      filter: ${CSS.FILTER_WHITE};
+      margin: 0 3px 0 0;
     }
   }
 `;

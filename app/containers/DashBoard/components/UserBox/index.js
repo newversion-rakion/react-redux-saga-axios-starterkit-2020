@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Icon from 'components/Icon';
+import postJobIcon from 'images/icons/mainNav/postJob.svg';
 import teamMemberThumb from 'images/draft/teamMemberThumb.jpg';
-import postNewJobIcon from 'images/icons/dashboard/postNewJob.svg';
 import changeUserAvt from 'images/icons/dashboard/changeUserAvt.svg';
 import UserBoxStyle from './UserBoxStyle';
 
@@ -15,7 +16,7 @@ const UserBox = () => {
               <img src={teamMemberThumb} alt="" />
             </div>
             <div className="smallIcon">
-              <img src={changeUserAvt} alt="" />
+              <Icon src={changeUserAvt} alt="" />
             </div>
           </div>
           <span>
@@ -25,7 +26,7 @@ const UserBox = () => {
       </div>
       <div className="userBoxRight">
         <Link className="btnPostNewJob" to="/company/jobs/create">
-          <img src={postNewJobIcon} alt="" />
+          <Icon src={postJobIcon} alt="" />
           Post New Job
         </Link>
       </div>

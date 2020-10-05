@@ -98,28 +98,9 @@ const MainNavStyle = styled.div`
     }
   }
 
-  .companyBox {
-    padding: 10px 30px 0;
-    a {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      font-size: 16px;
-      font-family: ${CSS.FONT700};
-      color: #000000;
-    }
-    span {
-      padding: 0 10px 0 0;
-      img {
-        margin: 0 3px 0 0;
-      }
-    }
-  }
-
   .postJobBox {
     padding: 10px 30px 50px;
-    a {
+    .btnPostJob {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -130,7 +111,9 @@ const MainNavStyle = styled.div`
       border: 2px solid #2b75cc;
       border-radius: 50px;
       font-family: ${CSS.FONT700};
-      img {
+      img,
+      object {
+        filter: ${CSS.FILTER_BLUE};
         margin: 0 5px 0 0;
       }
     }
@@ -162,23 +145,40 @@ const MainNavStyle = styled.div`
       font-family: ${CSS.FONT600};
       font-size: 16px;
       line-height: 22px;
-      color: #333333;
       padding: 19px 30px;
-      transition: all 0.3s ease 0s;
       margin: 0 0 20px;
+      color: #333333;
+      transition: all 0.3s ease 0s;
       &.isActive,
       &:hover,
       &:active {
         background: #f5f9fc;
         color: #2b75cc;
+        .mainNavText {
+          object {
+            filter: ${CSS.FILTER_BLUE};
+          }
+        }
       }
     }
     .behaviorBox {
       text-align: right;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      &:hover {
+        object {
+          filter: ${CSS.FILTER_BLUE};
+        }
+      }
     }
     .mainNavText {
       padding: 0 10px 0 0;
-      img {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      img,
+      object {
         margin: 0 10px 0 0;
       }
     }
