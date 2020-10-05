@@ -27,6 +27,7 @@ const ShortcutsStyle = styled.div`
       flex-wrap: wrap;
       .shortcutThumb {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         justify-content: center;
         width: 80px;
@@ -35,9 +36,13 @@ const ShortcutsStyle = styled.div`
         border: 2.4px solid #e3e4e5;
         border-radius: 50%;
         margin: 0 0 12px;
+        img {
+          max-width: 28px;
+        }
       }
       span {
         display: block;
+        width: 100%;
         text-align: center;
         font-size: 15px;
         line-height: 20px;
