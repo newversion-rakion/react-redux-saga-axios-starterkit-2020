@@ -10,6 +10,7 @@ const Shortcuts = () => (
       <div className="shortcutsBoxRow">
         {shortcutList &&
           shortcutList.map((item, i) => (
+            // eslint-disable-next-line react/no-array-index-key
             <div key={i} className="shortcutsBoxCol">
               <NavLink className="btnEditCompany" to={item.path}>
                 <div className="shortcutThumb">
