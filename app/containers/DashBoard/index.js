@@ -21,7 +21,7 @@ export function DashBoard(props) {
   useInjectSaga({ key: 'dashBoard', saga });
 
   useEffect(() => {
-    // props.getDashboard();
+    props.getDashboard();
   }, []);
   return (
     <div>
