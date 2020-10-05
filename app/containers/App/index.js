@@ -9,9 +9,10 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Switch, Route } from 'react-router-dom';
-import ReactNotification from 'react-notifications-component'
+import ReactNotification from 'react-notifications-component';
 import CompanyLayout from 'layouts/CompanyLayout';
 import ApplicantLayout from 'layouts/ApplicantLayout';
+import ScrolToTop from 'components/ScrollToTop';
 import Login from 'containers/Login/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import GlobalStyle from '../../global-styles';
@@ -26,6 +27,7 @@ export default function App() {
         <meta name="description" content="Mixer, The Creative Network" />
       </Helmet>
       <ReactNotification />
+      <ScrolToTop />
       <Switch>
         <Route path="/" exact component={Login} />
         <Route path="/login" exact component={Login} />
