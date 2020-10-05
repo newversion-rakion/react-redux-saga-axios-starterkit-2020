@@ -6,7 +6,7 @@ const JobList = styled.div`
   padding: 0 0 15px;
   .upperBox {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     align-items: center;
     margin: 0 -15px 40px;
   }
@@ -25,17 +25,22 @@ const JobList = styled.div`
     width: 50%;
     padding: 0 15px;
     text-align: right;
+    display: flex;
+    justify-content: flex-end;
     a {
       color: #ffffff;
       background: #2b75cc;
       border-radius: 50px;
       font-size: 14px;
       line-height: 19px;
-      padding: 12px 21px;
-      display: inline-block;
-      vertical-align: middle;
+      padding: 13px 21px;
+      max-width: 165px;
+      max-height: 45px;
+      display: flex;
+      align-items: center;
       font-family: ${CSS.FONT700};
-      img {
+      img,
+      object {
         margin: 0 8px 0 0;
       }
     }
@@ -61,7 +66,8 @@ const JobList = styled.div`
       justify-content: center;
       border-radius: 8px 0px 0px 8px;
       overflow: hidden;
-      img {
+      img,
+      object {
         width: 100%;
       }
     }
@@ -164,9 +170,13 @@ const JobList = styled.div`
       transition: all 0.3s ease 0s;
       &:hover {
         color: #2b75cc;
+        object {
+          filter: ${CSS.FILTER_BLUE};
+        }
       }
     }
-    img {
+    img,
+    object {
       margin: 0 6px 0 0;
     }
   }

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+import Icon from 'components/Icon';
 import dashboardJobThumb from 'images/draft/dashboardJobThumb.jpg';
 import applicantsIcon from 'images/icons/dashboard/applicants.svg';
 import emptyJobIcon from 'images/icons/dashboard/emptyJob.svg';
@@ -64,10 +65,10 @@ const Jobs = ({ jobs }) => (
               <div className="moreJobsBox">
                 <Link to="/" className="btnToMoreJobs">
                   <span>
-                    <img src={membersIcon} alt="" />
+                    <Icon src={membersIcon} alt="" />
                     Browse<strong>&nbsp;Videographers</strong>
                   </span>
-                  <img src={arrowRight} alt="" />
+                  <Icon src={arrowRight} alt="" />
                 </Link>
               </div>
             </div>

@@ -22,6 +22,7 @@ export default function LoginForm({ onSubmitForm }) {
     defaultValues: {},
     resolver: yupResolver(schema),
   });
+
   return (
     <LoginFormStyle>
       <form onSubmit={handleSubmit(onSubmitForm)}>

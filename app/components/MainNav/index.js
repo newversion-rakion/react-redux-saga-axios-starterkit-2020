@@ -9,7 +9,9 @@ import React, { useState } from 'react';
 // import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Logo from 'components/Logo';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, Link, useHistory } from 'react-router-dom';
+import Icon from 'components/Icon';
+import CompanyBox from './components/CompanyBox';
 import dashboardIcon from 'images/icons/mainNav/dashboard.svg';
 import jobListingsIcon from 'images/icons/mainNav/jobListings.svg';
 import membersIcon from 'images/icons/mainNav/members.svg';
@@ -57,22 +59,14 @@ function MainNav() {
             setMainNavState(false);
           }}
         >
-          <img src={closeMainNavIcon} alt="" />
+          <Icon src={closeMainNavIcon} alt="" />
         </button>
         <Logo />
-        <div className="companyBox">
-          <NavLink className="btnEditCompany" to="/company/editCompany">
-            <span>
-              <img src={companyThumb} alt="" />
-              Spotify
-            </span>
-            <img src={editIcon} alt="" />
-          </NavLink>
-        </div>
+        <CompanyBox />
         <div className="postJobBox">
           <NavLink className="btnPostJob" to="/">
             <span>
-              <img src={postJobIcon} alt="" />
+              <Icon src={postJobIcon} alt="" />
               Post Job
             </span>
           </NavLink>
@@ -80,31 +74,31 @@ function MainNav() {
         <nav className="mainNavGroup">
           <NavLink activeClassName="isActive" to="/company/dashboard">
             <span className="mainNavText">
-              <img src={dashboardIcon} alt="" />
+              <Icon src={dashboardIcon} alt="" />
               Dashboard
             </span>
           </NavLink>
 
         <NavLink activeClassName="isActive" to="/company/jobs">
           <span className="mainNavText">
-            <img src={jobListingsIcon} alt="" />
+            <Icon src={jobListingsIcon} alt="" />
             Job Listings
           </span>
           <div className="behaviorBox">
-            <img src={plusIcon} alt="" />
+            <Icon src={plusIcon} alt="" />
           </div>
         </NavLink>
 
         <NavLink activeClassName="isActive" to="/company/member">
           <span className="mainNavText">
-            <img src={membersIcon} alt="" />
+            <Icon src={membersIcon} alt="" />
             Members
           </span>
         </NavLink>
 
         <NavLink activeClassName="isActive" to="/company/messages">
           <span className="mainNavText">
-            <img src={messagesIcon} alt="" />
+            <Icon src={messagesIcon} alt="" />
             Messages
           </span>
           <div className="behaviorBox">
@@ -115,21 +109,21 @@ function MainNav() {
       <nav className="mainNavGroup">
         <NavLink activeClassName="isActive" to="/company/team">
           <span className="mainNavText">
-            <img src={teamIcon} alt="" />
+            <Icon src={teamIcon} alt="" />
             Team
           </span>
         </NavLink>
 
           <NavLink activeClassName="isActive"  to="/company/settings">
             <span className="mainNavText">
-              <img src={settingsIcon} alt="" />
+              <Icon src={settingsIcon} alt="" />
               Settings
             </span>
           </NavLink>
 
           <NavLink activeClassName="isActive" to="/company/billing">
             <span className="mainNavText">
-              <img src={billingIcon} alt="" />
+              <Icon src={billingIcon} alt="" />
               Billing
             </span>
           </NavLink>

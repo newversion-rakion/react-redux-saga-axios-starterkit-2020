@@ -36,7 +36,12 @@ const ShortcutsStyle = styled.div`
         border: 2.4px solid #e3e4e5;
         border-radius: 50%;
         margin: 0 0 12px;
-        img {
+        &:hover {
+          object {
+            filter: ${CSS.FILTER_BLUE};
+          }
+        }
+        object {
           max-width: 28px;
         }
       }

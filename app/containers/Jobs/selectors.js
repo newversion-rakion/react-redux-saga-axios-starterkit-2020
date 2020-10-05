@@ -5,7 +5,7 @@ import { initialState } from './reducer';
  * Direct selector to the job state domain
  */
 
-const selectJobDomain = state => state.job || initialState;
+const selectJobDomain = state => state.jobs || initialState;
 
 /**
  * Other specific selectors
