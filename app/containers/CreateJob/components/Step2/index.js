@@ -65,9 +65,15 @@ const Step2 = ({ register, errors, activeStep, changeStep, professions }) => (
           <strong>Step 2</strong> of 3
         </div>
         <div className="stepFooterRight">
-          <Link className="btn btnCancel" to="/company/jobs">
-            Cancel
-          </Link>
+          <button
+            type="button"
+            onClick={() => {
+              changeStep('step1');
+            }}
+            className="btn btnCancel"
+          >
+            Back
+          </button>
           <button
             type="button"
             onClick={() => {
