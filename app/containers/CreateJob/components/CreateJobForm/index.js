@@ -8,7 +8,7 @@ import Step1 from '../Step1';
 import Step2 from '../Step2';
 
 const CreateJobForm = props => {
-  const { activeStep, changeStep } = props;
+  const { activeStep, changeStep, createJob } = props;
 
   const { register, handleSubmit, errors } = useForm({
     reValidateMode: 'onChange',
@@ -31,12 +31,14 @@ const CreateJobForm = props => {
             changeStep={changeStep}
             register={register}
             errors={errors}
+            locations={createJob.locations}
           />
           <Step2
             activeStep={activeStep}
             changeStep={changeStep}
             register={register}
             errors={errors}
+            professions={createJob.professions}
           />
           <button type="submit">submit</button>
         </form>
