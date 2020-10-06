@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import formThumbStep2 from 'images/thumbs/createJob/formThumbStep2.svg';
-const Step2 = ({ register, errors, activeStep, changeStep }) => (
+const Step2 = ({ register, errors, activeStep, changeStep, professions }) => (
   <div
     className={classNames(
       'stepItem',
@@ -36,8 +36,9 @@ const Step2 = ({ register, errors, activeStep, changeStep }) => (
             <option value="" disabled hidden>
               Select Profession
             </option>
-            <option value="option1">Option 1</option>
-            <option value="option2">Option 2</option>
+            {professions.map((item, i) => (
+              <option key={i} value={item}>{item}</option>
+            ))}
           </select>
           {errors.job_profession && (
             <span className="formError">{errors.job_profession.message}</span>
