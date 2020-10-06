@@ -137,6 +137,9 @@ const MainNavStyle = styled.div`
       height: 1px;
       margin: 0 0 30px 30px;
     }
+    a {
+      color: #333333;
+    }
     > a,
     .wrapLinkItem {
       display: flex;
@@ -155,6 +158,9 @@ const MainNavStyle = styled.div`
       &:active {
         background: #f5f9fc;
         color: #2b75cc;
+        a {
+          color: #2b75cc;
+        }
         .mainNavText {
           object {
             filter: ${CSS.FILTER_BLUE};

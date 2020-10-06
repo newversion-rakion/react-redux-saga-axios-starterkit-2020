@@ -9,7 +9,7 @@ import React, { useState, useEffect } from 'react';
 // import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Logo from 'components/Logo';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, Link, useHistory } from 'react-router-dom';
 import Icon from 'components/Icon';
 import CompanyBox from './components/CompanyBox';
 import dashboardIcon from 'images/icons/mainNav/dashboard.svg';
@@ -81,14 +81,14 @@ function MainNav(props) {
             </span>
           </NavLink>
 
-          <div className="wrapLinkItem">
-            <NavLink className="mainNavText" activeClassName="isActive" to="/company/jobs">
+          <div className={classNames(props.location.pathname.includes('/company/jobs') ? 'isActive' : '', 'wrapLinkItem')}>
+            <NavLink className="mainNavText" to="/company/jobs">
               <Icon src={jobListingsIcon} alt="" />
               Job Listings
             </NavLink>
-            <div className="behaviorBox">
+            <Link className="behaviorBox" to="/company/jobs/create">
               <Icon src={plusIcon} alt="" />
-            </div>
+            </Link>
           </div>
 
           <NavLink activeClassName="isActive" to="/company/member">

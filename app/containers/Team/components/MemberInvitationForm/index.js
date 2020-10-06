@@ -21,7 +21,7 @@ const MemberInvitationForm = ({ onSubmitForm }) => {
     resolver: yupResolver(schema),
   });
 
-  const { isValid } = formState;
+  const { isValid, isDirty } = formState;
 
   return (
     <MemberInvitationFormStyle>
@@ -34,7 +34,7 @@ const MemberInvitationForm = ({ onSubmitForm }) => {
             type="text"
             ref={register}
           />
-          {errors.email && (
+          {errors.email && isDirty && (
             <span className="formError">{errors.email.message}</span>
           )}
           {isValid && (
