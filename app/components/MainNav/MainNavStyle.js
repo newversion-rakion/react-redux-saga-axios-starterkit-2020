@@ -137,7 +137,8 @@ const MainNavStyle = styled.div`
       height: 1px;
       margin: 0 0 30px 30px;
     }
-    a {
+    > a,
+    .wrapLinkItem {
       display: flex;
       align-items: center;
       justify-content: space-between;

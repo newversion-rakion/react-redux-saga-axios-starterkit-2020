@@ -66,7 +66,7 @@ function MainNav(props) {
         <Logo />
         <CompanyBox />
         <div className="postJobBox">
-          <NavLink className="btnPostJob" to="/">
+          <NavLink className="btnPostJob" to="/company/jobs/create">
             <span>
               <Icon src={postJobIcon} alt="" />
               Post Job
@@ -81,15 +81,15 @@ function MainNav(props) {
             </span>
           </NavLink>
 
-          <NavLink activeClassName="isActive" to="/company/jobs">
-            <span className="mainNavText">
+          <div className="wrapLinkItem">
+            <NavLink className="mainNavText" activeClassName="isActive" to="/company/jobs">
               <Icon src={jobListingsIcon} alt="" />
               Job Listings
-          </span>
+            </NavLink>
             <div className="behaviorBox">
               <Icon src={plusIcon} alt="" />
             </div>
-          </NavLink>
+          </div>
 
           <NavLink activeClassName="isActive" to="/company/member">
             <span className="mainNavText">
