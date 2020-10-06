@@ -32,6 +32,10 @@ const LoginFormStyle = styled.div`
     text-align: center;
     padding: 11px 10px;
     background: #2b75cc;
+    transition: all 0.3s ease 0s;
+    &:hover {
+      background: #225ea3;
+    }
   }
 
   .btnForgotPassword {

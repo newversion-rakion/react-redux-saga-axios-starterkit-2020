@@ -32,6 +32,10 @@ const MemberInvitationFormStyle = styled.div`
     right: 25px;
     top: 20px;
     z-index: 2;
+    transition: all 0.3s ease 0s;
+    &:hover {
+      background: #225ea3;
+    }
   }
 `;
 

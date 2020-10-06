@@ -39,6 +39,10 @@ const JobList = styled.div`
       display: flex;
       align-items: center;
       font-family: ${CSS.FONT700};
+      transition: all 0.3s ease 0s;
+      &:hover {
+        background: #225ea3;
+      }
       img,
       object {
         margin: 0 8px 0 0;

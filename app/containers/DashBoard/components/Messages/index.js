@@ -25,7 +25,7 @@ const Messages = ({ messages, unreadMessagesCount }) => (
       )}
       {messages.length > 0 && (
         <>
-          <Link className="btnGetNewMessage" to="/">
+          <Link className="btnGetNewMessage" to="/company/messages">
             <img src={newMessageNotifyIcon} alt="" />
             {unreadMessagesCount} New Messages
           </Link>
@@ -34,17 +34,20 @@ const Messages = ({ messages, unreadMessagesCount }) => (
               messages.map(item => (
                 <li key={item.id}>
                   <div className="thumb">
-                    <img src={teamMemberThumb} alt="" />
+                    <img src={item.avatar} alt="" />
                   </div>
                   <div className="content">
-                    <h4>Boris Chen</h4>
+                    <h4>{item.user_name}</h4>
                     <div className="messageContent">
-                      <p>That’s exactly what I was looking to st</p>
+                      <p>{item.content_message}</p>
                       <span className="time">53 min</span>
                     </div>
-                    <Link className="role" to="/">
-                      Graphic Designer
-                    </Link>
+                    {item.professions.map((professionItem, i) => (
+                      // eslint-disable-next-line react/no-array-index-key
+                      <Link key={i} className="role" to="/">
+                        {professionItem}
+                      </Link>
+                    ))}
                   </div>
                 </li>
               ))}

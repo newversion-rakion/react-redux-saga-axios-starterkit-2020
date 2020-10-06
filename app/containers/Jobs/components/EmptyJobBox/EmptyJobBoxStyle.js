@@ -46,6 +46,10 @@ const EmptyJobBoxStyle = styled.div`
     min-width: 264px;
     justify-content: center;
     font-family: ${CSS.FONT700};
+    transition: all 0.3s ease 0s;
+    &:hover {
+      background: #225ea3;
+    }
     img {
       margin: 0 8px 0 0;
     }

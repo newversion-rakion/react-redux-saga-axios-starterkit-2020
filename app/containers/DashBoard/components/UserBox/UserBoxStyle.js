@@ -64,6 +64,10 @@ const UserBoxStyle = styled.div`
     padding: 8px 20px;
     max-width: 165px;
     max-height: 45px;
+    transition: all 0.3s ease 0s;
+    &:hover {
+      background: #225ea3;
+    }
     img,
     object {
       filter: ${CSS.FILTER_WHITE};

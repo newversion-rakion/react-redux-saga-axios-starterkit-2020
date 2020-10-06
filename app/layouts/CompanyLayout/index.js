@@ -9,9 +9,9 @@ import RouterInterceptor from 'utils/routerInterceptor';
 import CompanyLayoutStyle from './CompanyLayoutStyle';
 
 // eslint-disable-next-line react/prop-types
-const CompanyLayout = () => (
+const CompanyLayout = props => (
   <CompanyLayoutStyle>
-    <MainNav />
+    <MainNav {...props} />
     <main className="mainPage">
       <Switch>
         <RouterInterceptor path="/company/dashboard" component={DashBoard} />
