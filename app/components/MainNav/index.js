@@ -9,7 +9,7 @@ import React, { useState, useEffect } from 'react';
 // import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Logo from 'components/Logo';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, Link, useHistory } from 'react-router-dom';
 import Icon from 'components/Icon';
 import CompanyBox from './components/CompanyBox';
 import dashboardIcon from 'images/icons/mainNav/dashboard.svg';
@@ -66,7 +66,7 @@ function MainNav(props) {
         <Logo />
         <CompanyBox />
         <div className="postJobBox">
-          <NavLink className="btnPostJob" to="/">
+          <NavLink className="btnPostJob" to="/company/jobs/create">
             <span>
               <Icon src={postJobIcon} alt="" />
               Post Job
@@ -81,15 +81,15 @@ function MainNav(props) {
             </span>
           </NavLink>
 
-          <NavLink activeClassName="isActive" to="/company/jobs">
-            <span className="mainNavText">
+          <div className={classNames(props.location.pathname.includes('/company/jobs') ? 'isActive' : '', 'wrapLinkItem')}>
+            <NavLink className="mainNavText" to="/company/jobs">
               <Icon src={jobListingsIcon} alt="" />
               Job Listings
-          </span>
-            <div className="behaviorBox">
+            </NavLink>
+            <Link className="behaviorBox" to="/company/jobs/create">
               <Icon src={plusIcon} alt="" />
-            </div>
-          </NavLink>
+            </Link>
+          </div>
 
           <NavLink activeClassName="isActive" to="/company/member">
             <span className="mainNavText">

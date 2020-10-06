@@ -138,6 +138,10 @@ const MainNavStyle = styled.div`
       margin: 0 0 30px 30px;
     }
     a {
+      color: #333333;
+    }
+    > a,
+    .wrapLinkItem {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -154,6 +158,9 @@ const MainNavStyle = styled.div`
       &:active {
         background: #f5f9fc;
         color: #2b75cc;
+        a {
+          color: #2b75cc;
+        }
         .mainNavText {
           object {
             filter: ${CSS.FILTER_BLUE};

@@ -40,6 +40,7 @@ const GlobalStyle = createGlobalStyle`
     list-style: none;
   }
 
+  // Form
   .formError {
     color: red;
     display: block;
@@ -48,7 +49,106 @@ const GlobalStyle = createGlobalStyle`
     padding: 10px 0;
   }
 
-  // Custom form
+  // Job form
+  .jobForm {
+    .formLabel {
+      font-size: 14px;
+      line-height: 20px;
+      color: #2B75CC;
+      font-family: ${CSS.FONT600};
+      display: block;
+      margin: 0 0 10px;
+      i {
+        font-size: 12px;
+        color: #8D91A5;
+        font-style: normal;
+        margin: 0 0 0 6px;
+      }
+    }
+    .form-control {
+      height: 48px;
+      color: #0E142C;
+      font-size: 14px;
+      padding: 10px 15px;
+      font-family: ${CSS.FONT600};
+      &::placeholder {
+        font-family: ${CSS.FONT500};
+        color: #8F9299;
+      }
+    }
+    .wrapUploadField {
+      display: flex;
+      align-items: center;
+      .uploadFileThumb {
+        position: relative;
+        cursor: pointer;
+        border: 2px solid #ccd2da;
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        line-height: 16px;
+        color: #ccd2da;
+        font-family: ${CSS.FONT700};
+        padding: 10px 27px;
+        margin: 0 10px 0 0;
+        object {
+          opacity: 0.6;
+          max-width: 14px;
+          margin: 0 5px 0 0;
+        }
+      }
+      .uploadFileName {
+        font-family: ${CSS.FONT600};
+        font-size: 14px;
+        line-height: 19px;
+        color: #0E142C;
+      }
+      input[type="file"] {
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .wrapSelectionField {
+      position: relative;
+      &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        margin-top: -3px;
+        right: 20px;
+        width: 0;
+        height: 0;
+        pointer-events: none;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-top: 6px solid #8F9299;
+      }
+      select {
+        appearance: none;
+        padding: 10px 40px 10px 15px;
+        &:not(:valid) {
+          color: #8D91A5;
+        }
+        option {
+          color: #0E142C;
+          font-family: ${CSS.FONT600};
+        }
+      }
+    }
+    textarea {
+      &.form-control {
+        height: 96px;
+      }
+    }
+  }
+
+  // Edit Company Form
   .editCompanyFormWrapper {
     .modal-dialog {
       max-width: 600px;
