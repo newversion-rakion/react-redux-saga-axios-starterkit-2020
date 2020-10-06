@@ -57,6 +57,10 @@ const PendingInviteStyle = styled.div`
       color: #ffffff;
       background: #2b75cc;
       margin: 0 0 0 10px;
+      transition: all 0.3s ease 0s;
+      &:hover {
+        background: #225ea3;
+      }
     }
   }
 `;

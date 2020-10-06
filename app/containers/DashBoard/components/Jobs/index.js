@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import moment from 'moment';
 import Icon from 'components/Icon';
-import dashboardJobThumb from 'images/draft/dashboardJobThumb.jpg';
 import applicantsIcon from 'images/icons/dashboard/applicants.svg';
 import emptyJobIcon from 'images/icons/dashboard/emptyJob.svg';
 import membersIcon from 'images/icons/mainNav/members.svg';
@@ -33,7 +31,7 @@ const Jobs = ({ jobs }) => (
               <div className="item">
                 <div className="thumb">
                   <Link to="company/job">
-                    <img src={dashboardJobThumb} alt="" />
+                    <img src={item.bacground_img} alt="" />
                   </Link>
                 </div>
                 <div className="itemContent">
@@ -41,20 +39,15 @@ const Jobs = ({ jobs }) => (
                     <Link to="company/job">{item.title}</Link>
                   </h4>
                   <p className="createdDate">
-                    Los Angeles
+                    {item.address}
                     <span className="time">
-                      Posted{' '}
-                      <strong>
-                        {
-                          moment(item.created_at)
-                            .format('ll')
-                            .split(',')[0]
-                        }
-                      </strong>
+                      Posted&nbsp;
+                      <strong>{item.posted_time}</strong>
                     </span>
                   </p>
                   <p className="jobInfo">
-                    <strong>104 Candidates</strong> (0 Starred)
+                    <strong>{item.candidate_count} Candidates</strong> (
+                    {item.starred_count} Starred)
                   </p>
                   <Link to="/" className="applicants">
                     <img src={applicantsIcon} alt="" />6 New Applicants

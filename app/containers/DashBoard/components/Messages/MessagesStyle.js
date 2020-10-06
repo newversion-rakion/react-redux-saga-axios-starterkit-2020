@@ -32,6 +32,7 @@ const MessagesStyle = styled.div`
       padding: 14px 15px;
       box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.12);
       border-radius: 8px;
+      cursor: pointer;
       transition: all 0.3s ease 0s;
       &:hover {
         box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.3);
@@ -98,6 +99,9 @@ const MessagesStyle = styled.div`
       background: #f5f9fc;
       padding: 4px 12px;
       border-radius: 30px;
+      ~ .role {
+        margin: 0 0 5px 10px;
+      }
     }
   }
   .messageEmptyBox {

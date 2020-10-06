@@ -5,11 +5,11 @@
  *
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Logo from 'components/Logo';
-import { NavLink, Link, useHistory } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import Icon from 'components/Icon';
 import CompanyBox from './components/CompanyBox';
 import dashboardIcon from 'images/icons/mainNav/dashboard.svg';
@@ -20,16 +20,18 @@ import teamIcon from 'images/icons/mainNav/team.svg';
 import settingsIcon from 'images/icons/mainNav/settings.svg';
 import billingIcon from 'images/icons/mainNav/billing.svg';
 import postJobIcon from 'images/icons/mainNav/postJob.svg';
-import editIcon from 'images/icons/mainNav/edit.svg';
 import plusIcon from 'images/icons/mainNav/plus.svg';
 import closeMainNavIcon from 'images/icons/mainNav/closeMainNav.svg';
-import companyThumb from 'images/draft/companyThumb.svg';
 
 import MainNavStyle from './MainNavStyle';
 
-function MainNav() {
+function MainNav(props) {
   const history = useHistory();
   const [isOpenMainNav, setMainNavState] = useState(false);
+  useEffect(() => {
+    setMainNavState(false);
+  }, [props.location.pathname])
+
   return (
     <MainNavStyle>
       <button
@@ -79,42 +81,42 @@ function MainNav() {
             </span>
           </NavLink>
 
-        <NavLink activeClassName="isActive" to="/company/jobs">
-          <span className="mainNavText">
-            <Icon src={jobListingsIcon} alt="" />
-            Job Listings
+          <NavLink activeClassName="isActive" to="/company/jobs">
+            <span className="mainNavText">
+              <Icon src={jobListingsIcon} alt="" />
+              Job Listings
           </span>
-          <div className="behaviorBox">
-            <Icon src={plusIcon} alt="" />
-          </div>
-        </NavLink>
+            <div className="behaviorBox">
+              <Icon src={plusIcon} alt="" />
+            </div>
+          </NavLink>
 
-        <NavLink activeClassName="isActive" to="/company/member">
-          <span className="mainNavText">
-            <Icon src={membersIcon} alt="" />
-            Members
+          <NavLink activeClassName="isActive" to="/company/member">
+            <span className="mainNavText">
+              <Icon src={membersIcon} alt="" />
+              Members
           </span>
-        </NavLink>
+          </NavLink>
 
-        <NavLink activeClassName="isActive" to="/company/messages">
-          <span className="mainNavText">
-            <Icon src={messagesIcon} alt="" />
-            Messages
+          <NavLink activeClassName="isActive" to="/company/messages">
+            <span className="mainNavText">
+              <Icon src={messagesIcon} alt="" />
+              Messages
           </span>
-          <div className="behaviorBox">
-            <span className="mainNavStatus">99+</span>
-          </div>
-        </NavLink>
-      </nav>
-      <nav className="mainNavGroup">
-        <NavLink activeClassName="isActive" to="/company/team">
-          <span className="mainNavText">
-            <Icon src={teamIcon} alt="" />
-            Team
+            <div className="behaviorBox">
+              <span className="mainNavStatus">99+</span>
+            </div>
+          </NavLink>
+        </nav>
+        <nav className="mainNavGroup">
+          <NavLink activeClassName="isActive" to="/company/team">
+            <span className="mainNavText">
+              <Icon src={teamIcon} alt="" />
+              Team
           </span>
-        </NavLink>
+          </NavLink>
 
-          <NavLink activeClassName="isActive"  to="/company/settings">
+          <NavLink activeClassName="isActive" to="/company/settings">
             <span className="mainNavText">
               <Icon src={settingsIcon} alt="" />
               Settings

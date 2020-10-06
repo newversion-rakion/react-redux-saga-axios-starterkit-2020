@@ -12,7 +12,7 @@ import teamMemberThumb from 'images/draft/teamMemberThumb.jpg';
 import CompanyBoxStyle from './CompanyBoxStyle';
 
 const schema = yup.object().shape({
-  company_name: yup.string().required('Password is required'),
+  companyName: yup.string().required('Password is required'),
 });
 
 const CompanyBox = () => {
@@ -24,7 +24,10 @@ const CompanyBox = () => {
   const { register, handleSubmit, errors } = useForm({
     shouldFocusError: true,
     shouldUnregister: true,
-    defaultValues: {},
+    defaultValues: {
+      companyName: `${JSON.parse(localStorage.getItem('user_info'))
+        .companyName || ''}`,
+    },
     resolver: yupResolver(schema),
   });
 
@@ -39,7 +42,7 @@ const CompanyBox = () => {
           <div className="companyThumb">
             <img src={teamMemberThumb} alt="" />
           </div>
-          Spotify
+          {JSON.parse(localStorage.getItem('user_info')).companyName}
         </Link>
       </div>
       <button type="button" className="btnEditCompany" onClick={handleShow}>
@@ -74,12 +77,12 @@ const CompanyBox = () => {
               <span className="formLabel">Company Name</span>
               <input
                 className="form-control"
-                name="company_name"
+                name="companyName"
                 type="text"
                 ref={register}
               />
-              {errors.company_name && (
-                <span className="formError">{errors.company_name.message}</span>
+              {errors.companyName && (
+                <span className="formError">{errors.companyName.message}</span>
               )}
             </div>
             <div className="btnWrapper">
