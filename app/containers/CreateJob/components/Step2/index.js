@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import formThumbStep2 from 'images/thumbs/createJob/formThumbStep2.svg';
 const Step2 = ({ register, errors, activeStep, changeStep, professions }) => (
@@ -28,7 +27,7 @@ const Step2 = ({ register, errors, activeStep, changeStep, professions }) => (
         <div className="wrapSelectionField">
           <select
             ref={register}
-            name="job_profession"
+            name="profession"
             required
             className="form-control"
             defaultValue=""
@@ -37,11 +36,13 @@ const Step2 = ({ register, errors, activeStep, changeStep, professions }) => (
               Select Profession
             </option>
             {professions.map((item, i) => (
-              <option key={i} value={item}>{item}</option>
+              <option key={i} value={item}>
+                {item}
+              </option>
             ))}
           </select>
-          {errors.job_profession && (
-            <span className="formError">{errors.job_profession.message}</span>
+          {errors.profession && (
+            <span className="formError">{errors.profession.message}</span>
           )}
         </div>
       </div>
@@ -50,13 +51,13 @@ const Step2 = ({ register, errors, activeStep, changeStep, professions }) => (
         <span className="formLabel">Role Budget</span>
         <input
           className="form-control"
-          name="job_budget"
+          name="compensation"
           type="text"
           placeholder="Enter Ideal Pay Amount (e.g. $1200 per day, $10-$20k)"
           ref={register}
         />
-        {errors.job_budget && (
-          <span className="formError">{errors.job_budget.message}</span>
+        {errors.compensation && (
+          <span className="formError">{errors.compensation.message}</span>
         )}
       </div>
 
@@ -93,6 +94,7 @@ Step2.propTypes = {
   register: PropTypes.func,
   errors: PropTypes.object,
   activeStep: PropTypes.string,
+  professions: PropTypes.array,
   changeStep: PropTypes.func,
 };
 

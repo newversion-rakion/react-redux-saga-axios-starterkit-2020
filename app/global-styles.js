@@ -80,6 +80,7 @@ const GlobalStyle = createGlobalStyle`
       display: flex;
       align-items: center;
       .uploadFileThumb {
+        min-width: 120px;
         position: relative;
         cursor: pointer;
         border: 2px solid #ccd2da;

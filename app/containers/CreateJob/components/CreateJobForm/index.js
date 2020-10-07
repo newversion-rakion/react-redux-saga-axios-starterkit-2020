@@ -6,11 +6,13 @@ import CreateJobFormStyle from './CreateJobFormStyle';
 import formSchema from './formSchema';
 import Step1 from '../Step1';
 import Step2 from '../Step2';
+import Step3 from '../Step3';
 
 const CreateJobForm = props => {
-  const { activeStep, changeStep, createJob } = props;
+  const { activeStep, changeStep, createJobData, onSubmitForm } = props;
 
-  const { register, handleSubmit, errors } = useForm({
+  const { register, handleSubmit, watch, errors } = useForm({
+    mode: 'onChange',
     reValidateMode: 'onChange',
     shouldFocusError: true,
     shouldUnregister: true,
@@ -18,9 +20,7 @@ const CreateJobForm = props => {
     resolver: yupResolver(formSchema),
   });
 
-  const onSubmitForm = value => {
-    console.log(value);
-  };
+  const watchAllFields = watch();
 
   return (
     <CreateJobFormStyle>
@@ -31,16 +31,20 @@ const CreateJobForm = props => {
             changeStep={changeStep}
             register={register}
             errors={errors}
-            locations={createJob.locations}
+            locations={createJobData.locations}
           />
           <Step2
             activeStep={activeStep}
             changeStep={changeStep}
             register={register}
             errors={errors}
-            professions={createJob.professions}
+            professions={createJobData.professions}
           />
-          <button type="submit">submit</button>
+          <Step3
+            activeStep={activeStep}
+            changeStep={changeStep}
+            watchAllFields={watchAllFields}
+          />
         </form>
       </div>
     </CreateJobFormStyle>
@@ -48,9 +52,10 @@ const CreateJobForm = props => {
 };
 
 CreateJobForm.propTypes = {
-  onSubmitForm: PropTypes.func,
+  createJobData: PropTypes.object,
   activeStep: PropTypes.string,
   changeStep: PropTypes.func,
+  onSubmitForm: PropTypes.func.isRequired,
 };
 
 export default CreateJobForm;

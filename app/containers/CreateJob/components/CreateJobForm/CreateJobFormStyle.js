@@ -94,6 +94,39 @@ const CreateJobFormStyle = styled.div`
       position: static;
     }
   }
+  .previewBox {
+    padding: 0 0 5px;
+  }
+  .previewBoxContent {
+    position: relative;
+    width: 287px;
+    height: 415px;
+    overflow: hidden;
+    margin: 0 auto;
+    &:after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 200px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: 2;
+      background-image: linear-gradient(rgba(255, 255, 255, 0), #ffffff);
+    }
+    .iphone {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+    .previewBoxFormData {
+      padding: 60px 40px 15px;
+      height: 100%;
+      position: relative;
+      z-index: 2;
+    }
+  }
 `;
 
 export default CreateJobFormStyle;

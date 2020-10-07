@@ -5,13 +5,16 @@
  */
 import produce from 'immer';
 import {
-  DEFAULT_ACTION,
+  RESET_CREATEJOBDATA_REDUCER,
   GET_PROFESSIONS_PENDING,
   GET_PROFESSIONS_SUCCESS,
   GET_PROFESSIONS_ERROR,
   GET_LOCATIONS_PENDING,
   GET_LOCATIONS_SUCCESS,
   GET_LOCATIONS_ERROR,
+  CREATE_JOB_PENDING,
+  CREATE_JOB_SUCCESS,
+  CREATE_JOB_ERROR,
 } from './constants';
 
 export const initialState = {
@@ -24,8 +27,12 @@ export const initialState = {
 const createJobReducer = (state = initialState, action) =>
   produce(state, (/* draft */) => {
     switch (action.type) {
-      case DEFAULT_ACTION:
-        break;
+      case RESET_CREATEJOBDATA_REDUCER:
+        return {
+          loading: false,
+          professions: [],
+          locations: [],
+        };
       case GET_PROFESSIONS_PENDING:
         return { ...state, loading: true };
       case GET_PROFESSIONS_SUCCESS:
@@ -37,6 +44,12 @@ const createJobReducer = (state = initialState, action) =>
       case GET_LOCATIONS_SUCCESS:
         return { ...state, locations: action.respond.data, loading: false };
       case GET_LOCATIONS_ERROR:
+        return { ...state, loading: false };
+      case CREATE_JOB_PENDING:
+        return { ...state, loading: true };
+      case CREATE_JOB_SUCCESS:
+        return { ...state, loading: false };
+      case CREATE_JOB_ERROR:
         return { ...state, loading: false };
     }
   });

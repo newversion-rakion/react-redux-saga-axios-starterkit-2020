@@ -31,13 +31,13 @@ const Step1 = ({ register, errors, activeStep, changeStep, locations }) => {
           <span className="formLabel">Listing Title</span>
           <input
             className="form-control"
-            name="job_title"
+            name="title"
             type="text"
             placeholder="Enter Job Title"
             ref={register}
           />
-          {errors.job_title && (
-            <span className="formError">{errors.job_title.message}</span>
+          {errors.title && (
+            <span className="formError">{errors.title.message}</span>
           )}
         </div>
 
@@ -57,7 +57,9 @@ const Step1 = ({ register, errors, activeStep, changeStep, locations }) => {
                 Select Location
               </option>
               {locations.map((item, i) => (
-                <option key={i} value={item}>{item}</option>
+                <option key={i} value={item}>
+                  {item}
+                </option>
               ))}
             </select>
           </div>
@@ -82,9 +84,15 @@ const Step1 = ({ register, errors, activeStep, changeStep, locations }) => {
           </span>
           <div className="wrapUploadField">
             <label className="uploadFileThumb">
-              <input type="file" ref={register} accept="image/*" name="jobCover" onChange={(e) => {
-                changeFileName(e.target.files[0].name);
-              }} />
+              <input
+                type="file"
+                ref={register}
+                accept="image/*"
+                name="cover_photo_file"
+                onChange={e => {
+                  changeFileName(e.target.files[0].name);
+                }}
+              />
               <Icon src={uploadIcon} alt="" />
               Upload
             </label>
@@ -119,6 +127,7 @@ const Step1 = ({ register, errors, activeStep, changeStep, locations }) => {
 Step1.propTypes = {
   register: PropTypes.func,
   errors: PropTypes.object,
+  locations: PropTypes.array,
   activeStep: PropTypes.string,
   changeStep: PropTypes.func,
 };

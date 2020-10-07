@@ -2,10 +2,10 @@ import { createSelector } from 'reselect';
 import { initialState } from './reducer';
 
 /**
- * Direct selector to the createJob state domain
+ * Direct selector to the createJobData state domain
  */
 
-const selectCreateJobDomain = state => state.createJob || initialState;
+const selectCreateJobDomain = state => state.createJobData || initialState;
 
 /**
  * Other specific selectors

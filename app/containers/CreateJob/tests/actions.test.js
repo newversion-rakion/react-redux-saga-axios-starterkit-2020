@@ -1,11 +1,11 @@
 import { defaultAction } from '../actions';
-import { DEFAULT_ACTION } from '../constants';
+import { RESET_CREATEJOBDATA_REDUCER } from '../constants';
 
 describe('CreateJob actions', () => {
   describe('Default Action', () => {
-    it('has a type of DEFAULT_ACTION', () => {
+    it('has a type of RESET_CREATEJOBDATA_REDUCER', () => {
       const expected = {
-        type: DEFAULT_ACTION,
+        type: RESET_CREATEJOBDATA_REDUCER,
       };
       expect(defaultAction()).toEqual(expected);
     });

@@ -13,7 +13,8 @@ import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
 import Loading from 'components/Loading';
 import makeSelectCreateJob from './selectors';
-import { getProfesstions, getLocations } from './actions';
+import { getProfesstions, getLocations, createJob } from './actions';
+import { RESET_CREATEJOBDATA_REDUCER } from './constants';
 import reducer from './reducer';
 import saga from './saga';
 import StepNav from './components/StepNav';
@@ -21,8 +22,14 @@ import CreateJobForm from './components/CreateJobForm';
 import CreateJobStyle from './CreateJobStyle';
 
 export function CreateJob(props) {
-  useInjectReducer({ key: 'createJob', reducer });
-  useInjectSaga({ key: 'createJob', saga });
+  useInjectReducer({ key: 'createJobData', reducer });
+  useInjectSaga({ key: 'createJobData', saga });
+  useEffect(() => {
+    props.dispatch({
+      type: RESET_CREATEJOBDATA_REDUCER,
+    });
+  }, []);
+
   useEffect(() => {
     props.getProfesstions();
     props.getLocations();
@@ -31,11 +38,16 @@ export function CreateJob(props) {
 
   return (
     <>
-      <Loading loading={props.createJob.loading} />
+      <Loading loading={props.createJobData.loading} />
       <CreateJobStyle>
         <div className="pageContent">
           <StepNav changeStep={changeStep} activeStep={activeStep} />
-          <CreateJobForm createJob={props.createJob} activeStep={activeStep} changeStep={changeStep} />
+          <CreateJobForm
+            onSubmitForm={props.onSubmitForm}
+            createJobData={props.createJobData}
+            activeStep={activeStep}
+            changeStep={changeStep}
+          />
         </div>
       </CreateJobStyle>
     </>
@@ -44,16 +56,24 @@ export function CreateJob(props) {
 
 CreateJob.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  createJobData: PropTypes.object.isRequired,
+  getProfesstions: PropTypes.func.isRequired,
+  getLocations: PropTypes.func.isRequired,
+  onSubmitForm: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
-  createJob: makeSelectCreateJob(),
+  createJobData: makeSelectCreateJob(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     getProfesstions: () => dispatch(getProfesstions()),
     getLocations: () => dispatch(getLocations()),
+    onSubmitForm: data => {
+      if (data !== undefined && data.preventDefault) data.preventDefault();
+      dispatch(createJob(data));
+    },
     dispatch,
   };
 }
