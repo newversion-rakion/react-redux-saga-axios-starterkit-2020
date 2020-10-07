@@ -43,14 +43,22 @@ export function* getLocations() {
 }
 
 export function* createJob(action) {
+  const formDataJSON = action.data;
+  const formData = new FormData();
+
+  formData.append('cover_photo_file', [...formDataJSON.cover_photo_file][0]);
+  delete formDataJSON.cover_photo_file;
+  formData.append('rawData', formDataJSON);
+
   const payload = {
     url: '/jobs/create_job',
     params: null,
-    data: action.data,
+    formData,
     apiName: 'create job',
   };
+
   try {
-    const respond = yield call(Api.post, payload);
+    const respond = yield call(Api.postFormData, payload);
     yield put(createJobSuccess(respond));
   } catch (err) {
     yield put(createJobError(err));

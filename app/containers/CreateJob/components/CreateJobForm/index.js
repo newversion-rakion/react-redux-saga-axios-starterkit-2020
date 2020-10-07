@@ -21,7 +21,6 @@ const CreateJobForm = props => {
   });
 
   const watchAllFields = watch();
-
   return (
     <CreateJobFormStyle>
       <div className="jobForm">

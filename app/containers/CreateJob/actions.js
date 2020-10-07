@@ -64,7 +64,6 @@ export function getLocationsError(error) {
 }
 
 export function createJob(data) {
-  console.log(data);
   return {
     type: CREATE_JOB_PENDING,
     data,
