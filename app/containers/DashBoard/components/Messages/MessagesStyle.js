@@ -70,14 +70,14 @@ const MessagesStyle = styled.div`
       margin: 0 0 5px;
       p {
         margin: 0;
-        width: calc(100% - 65px);
+        width: calc(100% - 90px);
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
       }
     }
     .time {
-      width: 65px;
+      width: 90px;
       display: flex;
       align-items: center;
       padding: 0 0 0 5px;

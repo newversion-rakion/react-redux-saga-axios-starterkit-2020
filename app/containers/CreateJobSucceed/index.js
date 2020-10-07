@@ -31,7 +31,7 @@ export function CreateJobSucceed() {
               Member Search.
             </p>
             <div className="btnGroup">
-              <Link className="btn btnMemberSearch" to="/company/member">
+              <Link className="btn btnMemberSearch" to="/company/members">
                 <Icon src={membersIcon} />
                 Search Members
               </Link>

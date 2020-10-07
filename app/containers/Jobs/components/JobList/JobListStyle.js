@@ -136,7 +136,7 @@ const JobList = styled.div`
     }
   }
 
-  .jobTags {
+  .profession {
     display: flex;
     flex-wrap: nowrap;
     align-items: center;

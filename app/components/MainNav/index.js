@@ -91,7 +91,7 @@ function MainNav(props) {
             </Link>
           </div>
 
-          <NavLink activeClassName="isActive" to="/company/member">
+          <NavLink activeClassName="isActive" to="/company/members">
             <span className="mainNavText">
               <Icon src={membersIcon} alt="" />
               Members

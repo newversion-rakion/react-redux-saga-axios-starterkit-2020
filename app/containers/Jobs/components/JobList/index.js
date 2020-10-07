@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Icon from 'components/Icon';
 import postJobIcon from 'images/icons/job/postJob.svg';
-import jobThumb from 'images/draft/jobThumb.jpg';
 import newApplicantsIcon from 'images/icons/job/newApplicants.svg';
 import applicantIcon from 'images/icons/job/applicant.svg';
 import starredIcon from 'images/icons/job/starred.svg';
@@ -11,7 +10,7 @@ import notesIcon from 'images/icons/job/notes.svg';
 
 import JobListStyle from './JobListStyle';
 
-const JobList = ({ boxTitle, isCurrentJobs }) => (
+const JobList = ({ boxTitle, isCurrentJobs, jobList }) => (
   <JobListStyle>
     <div className="upperBox">
       <div className="upperBoxLeft">
@@ -19,7 +18,7 @@ const JobList = ({ boxTitle, isCurrentJobs }) => (
       </div>
       <div className="behaviorBox">
         {isCurrentJobs && (
-          <Link to="/">
+          <Link to="/company/jobs/create">
             <Icon src={postJobIcon} alt="" />
             Post New Job
           </Link>
@@ -29,64 +28,75 @@ const JobList = ({ boxTitle, isCurrentJobs }) => (
 
     <div className="jobList">
       <ul>
-        <li className="jobItem">
-          <div className="thumb">
-            <img src={jobThumb} alt="" />
-          </div>
-          <div className="content">
-            <div className="itemHeader">
-              <div className="itemHeaderLeft">
-                <h3 className="jobName">Videographer Needed</h3>
-                <p className="createdDate">
-                  New York City
-                  <span className="time">
-                    Posted <strong>June 23, 2020</strong>
-                  </span>
-                </p>
-              </div>
-              <div className="itemHeaderRight">
-                <Link to="/" className="btn btnEditJob">
-                  Edit Job
-                </Link>
-              </div>
+        {jobList.map((item, i) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <li key={i} className="jobItem">
+            <div className="thumb">
+              <img src={item.bacground_img} alt="" />
             </div>
-            <ul className="jobTags">
-              <li>
-                <Link to="/">Videographers</Link>
-              </li>
-              <li>
-                <Link to="/">Designer</Link>
-              </li>
-            </ul>
-            <ul className="footerItems">
-              {isCurrentJobs && (
+            <div className="content">
+              <div className="itemHeader">
+                <div className="itemHeaderLeft">
+                  <h3 className="jobName">{item.title}</h3>
+                  <p className="createdDate">
+                    {item.address}
+                    <span className="time">
+                      Posted <strong>{item.posted_time}</strong>
+                    </span>
+                  </p>
+                </div>
+                <div className="itemHeaderRight">
+                  <Link
+                    to={`/company/jobs/${item.id}/edit`}
+                    className="btn btnEditJob"
+                  >
+                    Edit Job
+                  </Link>
+                </div>
+              </div>
+              <ul className="profession">
+                {item.professions.map((professtionItem, index) => (
+                  // eslint-disable-next-line react/no-array-index-key
+                  <li key={index}>
+                    <Link to={`company/members/${professtionItem}`}>
+                      {professtionItem}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <ul className="footerItems">
+                {isCurrentJobs && (
+                  <li>
+                    <Link to="/">
+                      <Icon src={newApplicantsIcon} alt="" />
+                      {item.new_applicant_count} New Applicants
+                    </Link>
+                  </li>
+                )}
                 <li>
                   <Link to="/">
-                    <Icon src={newApplicantsIcon} alt="" />6 New Applicants
+                    <Icon src={applicantIcon} alt="" />
+                    {item.candidate_count} Applicants
                   </Link>
                 </li>
-              )}
-              <li>
-                <Link to="/">
-                  <Icon src={applicantIcon} alt="" />
-                  104 Applicants
-                </Link>
-              </li>
 
-              <li>
-                <Link to="/">
-                  <Icon src={starredIcon} alt="" />3 Starred
-                </Link>
-              </li>
+                <li>
+                  <Link to="/">
+                    <Icon src={starredIcon} alt="" />
+                    {item.starred_count} Starred
+                  </Link>
+                </li>
 
-              <li>
-                <Link to="/">
-                  <Icon src={notesIcon} alt="" />2 Notes
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </li>
+                <li>
+                  <Link to="/">
+                    <Icon src={notesIcon} alt="" />
+                    {item.notes} Notes
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </li>
+        ))}
       </ul>
     </div>
   </JobListStyle>
@@ -95,6 +105,7 @@ const JobList = ({ boxTitle, isCurrentJobs }) => (
 JobList.propTypes = {
   boxTitle: PropTypes.string,
   isCurrentJobs: PropTypes.bool,
+  jobList: PropTypes.array,
 };
 
 export default JobList;

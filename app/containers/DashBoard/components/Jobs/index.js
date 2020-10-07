@@ -25,8 +25,9 @@ const Jobs = ({ jobs }) => (
         </div>
       )}
       {jobs &&
-        jobs.map(item => (
-          <div key={item.id} className="jobListingsBoxCol">
+        jobs.map((item, i) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <div key={i} className="jobListingsBoxCol">
             <div className="jobBoxContent">
               <div className="item">
                 <div className="thumb">
@@ -56,10 +57,17 @@ const Jobs = ({ jobs }) => (
               </div>
 
               <div className="moreJobsBox">
-                <Link to="/" className="btnToMoreJobs">
+                <Link
+                  to={`/company/members/${item.professions &&
+                    item.professions[0]}`}
+                  className="btnToMoreJobs"
+                >
                   <span>
                     <Icon src={membersIcon} alt="" />
-                    Browse<strong>&nbsp;Videographers</strong>
+                    Browse
+                    <strong>
+                      &nbsp;{item.professions && item.professions[0]}
+                    </strong>
                   </span>
                   <Icon src={arrowRight} alt="" />
                 </Link>

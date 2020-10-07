@@ -6,6 +6,7 @@ import Team from 'containers/Team/Loadable';
 import Jobs from 'containers/Jobs/Loadable';
 import CreateJob from 'containers/CreateJob/Loadable';
 import Messages from 'containers/Messages/Loadable';
+import Members from 'containers/Members/Loadable';
 import CreateJobSucceed from 'containers/CreateJobSucceed/Loadable';
 import RouterInterceptor from 'utils/routerInterceptor';
 import CompanyLayoutStyle from './CompanyLayoutStyle';
@@ -18,6 +19,7 @@ const CompanyLayout = props => (
       <Switch>
         <RouterInterceptor path="/company/dashboard" component={DashBoard} />
         <RouterInterceptor path="/company/team" component={Team} />
+        <RouterInterceptor path="/company/members" component={Members} />
         <RouterInterceptor exact path="/company/jobs" component={Jobs} />
         <RouterInterceptor
           exact

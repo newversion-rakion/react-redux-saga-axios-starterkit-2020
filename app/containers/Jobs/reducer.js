@@ -13,6 +13,8 @@ import {
 
 export const initialState = {
   loading: false,
+  currentJobs: [],
+  hiredJobs: [],
 };
 
 /* eslint-disable default-case, no-param-reassign */
@@ -24,7 +26,12 @@ const jobsReducer = (state = initialState, action) =>
       case GET_JOBS_PENDING:
         return { ...state, loading: true };
       case GET_JOBS_SUCCESS:
-        return { ...state, jobList: action.respond.data.jobs, loading: false };
+        return {
+          ...state,
+          currentJobs: action.respond.data.jobs.current || [],
+          hiredJobs: action.respond.data.jobs.hired || [],
+          loading: false,
+        };
       case GET_JOBS_ERROR:
         return { ...state, loading: false };
     }

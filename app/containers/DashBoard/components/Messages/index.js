@@ -31,8 +31,9 @@ const Messages = ({ messages, unreadMessagesCount }) => (
           </Link>
           <ul className="messageList">
             {messages &&
-              messages.map(item => (
-                <li key={item.id}>
+              messages.map((item, i) => (
+                // eslint-disable-next-line react/no-array-index-key
+                <li key={i}>
                   <div className="thumb">
                     <img src={item.avatar} alt="" />
                   </div>
@@ -40,11 +41,11 @@ const Messages = ({ messages, unreadMessagesCount }) => (
                     <h4>{item.user_name}</h4>
                     <div className="messageContent">
                       <p>{item.content_message}</p>
-                      <span className="time">53 min</span>
+                      <span className="time">{item.posted_time}</span>
                     </div>
-                    {item.professions.map((professionItem, i) => (
+                    {item.professions.map((professionItem, index) => (
                       // eslint-disable-next-line react/no-array-index-key
-                      <Link key={i} className="role" to="/">
+                      <Link key={index} className="role" to="/">
                         {professionItem}
                       </Link>
                     ))}

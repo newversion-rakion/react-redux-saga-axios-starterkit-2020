@@ -45,7 +45,10 @@ export function DashBoard(props) {
         </div>
         <Shortcuts />
         <p className="lastlog">
-          Last log in was <strong>June 23, 2020.</strong>
+          Last log in was{' '}
+          <strong>
+            {JSON.parse(localStorage.getItem('user_info')).lastLoginAt}
+          </strong>
         </p>
       </DashBoardStyle>
     </div>
