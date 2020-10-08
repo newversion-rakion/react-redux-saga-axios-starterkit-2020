@@ -3,7 +3,7 @@
  * CreateJob actions
  *
  */
-
+import history from 'utils/history';
 import {
   RESET_CREATE_JOBDATA_REDUCER,
   CREATE_JOB_PENDING,
@@ -25,6 +25,7 @@ export function createJob(data) {
 }
 
 export function createJobSuccess(respond) {
+  history.push('/company/jobs/createJobSucceed');
   return {
     type: CREATE_JOB_SUCCESS,
     respond,

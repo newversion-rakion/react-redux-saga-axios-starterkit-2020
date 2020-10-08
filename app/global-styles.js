@@ -130,17 +130,6 @@ const GlobalStyle = createGlobalStyle`
         border-right: 6px solid transparent;
         border-top: 6px solid #8F9299;
       }
-      select {
-        appearance: none;
-        padding: 10px 40px 10px 15px;
-        &:not(:valid) {
-          color: #8D91A5;
-        }
-        option {
-          color: #0E142C;
-          font-family: ${CSS.FONT600};
-        }
-      }
     }
     textarea {
       &.form-control {

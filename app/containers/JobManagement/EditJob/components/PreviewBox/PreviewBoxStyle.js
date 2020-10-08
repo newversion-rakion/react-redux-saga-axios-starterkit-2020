@@ -9,14 +9,16 @@ const PreviewBoxStyle = styled.div`
   .previewBoxContent {
     width: 100%;
     overflow: hidden;
+    position: relative;
     .iphone {
       width: 100%;
     }
     .previewBoxFormData {
       padding: 60px 40px 15px;
       height: 100%;
-      position: relative;
       z-index: 2;
+      position: absolute;
+      top: 0;
     }
   }
 `;
