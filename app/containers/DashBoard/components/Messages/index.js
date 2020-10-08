@@ -43,12 +43,13 @@ const Messages = ({ messages, unreadMessagesCount }) => (
                       <p>{item.content_message}</p>
                       <span className="time">{item.posted_time}</span>
                     </div>
-                    {item.professions.map((professionItem, index) => (
-                      // eslint-disable-next-line react/no-array-index-key
-                      <Link key={index} className="role" to="/">
-                        {professionItem}
-                      </Link>
-                    ))}
+                    <Link
+                      className="role"
+                      to={`/company/members/${item.profession &&
+                        item.profession.id}`}
+                    >
+                      {item.profession && item.profession.name}
+                    </Link>
                   </div>
                 </li>
               ))}

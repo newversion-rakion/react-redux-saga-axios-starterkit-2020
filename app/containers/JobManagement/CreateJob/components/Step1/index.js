@@ -48,7 +48,7 @@ const Step1 = ({ register, errors, activeStep, changeStep, locations }) => {
           <div className="wrapSelectionField">
             <select
               ref={register}
-              name="location"
+              name="location_id"
               required
               className="form-control"
               defaultValue=""
@@ -56,9 +56,9 @@ const Step1 = ({ register, errors, activeStep, changeStep, locations }) => {
               <option value="" disabled hidden>
                 Select Location
               </option>
-              {locations.map((item, i) => (
-                <option key={i} value={item}>
-                  {item}
+              {locations.map(item => (
+                <option key={item.id} value={item.id}>
+                  {item.name}
                 </option>
               ))}
             </select>

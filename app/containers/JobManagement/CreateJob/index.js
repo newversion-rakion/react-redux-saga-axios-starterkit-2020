@@ -12,9 +12,11 @@ import { compose } from 'redux';
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
 import Loading from 'components/Loading';
+import { getProfessions, getLocations } from 'containers/App/actions';
+import { makeSelectGlobalState } from 'containers/App/selectors';
 import makeSelectCreateJob from './selectors';
-import { getProfesstions, getLocations, createJob } from './actions';
-import { RESET_CREATEJOBDATA_REDUCER } from './constants';
+import { createJob } from './actions';
+import { RESET_CREATE_JOBDATA_REDUCER } from './constants';
 import reducer from './reducer';
 import saga from './saga';
 import StepNav from './components/StepNav';
@@ -26,16 +28,15 @@ export function CreateJob(props) {
   useInjectSaga({ key: 'createJobData', saga });
   useEffect(() => {
     props.dispatch({
-      type: RESET_CREATEJOBDATA_REDUCER,
+      type: RESET_CREATE_JOBDATA_REDUCER,
     });
   }, []);
 
   useEffect(() => {
-    props.getProfesstions();
+    props.getProfessions();
     props.getLocations();
   }, []);
   const [activeStep, changeStep] = useState('step1');
-
   return (
     <>
       <Loading loading={props.createJobData.loading} />
@@ -45,6 +46,7 @@ export function CreateJob(props) {
           <CreateJobForm
             onSubmitForm={props.onSubmitForm}
             createJobData={props.createJobData}
+            globalData={props.globalData}
             activeStep={activeStep}
             changeStep={changeStep}
           />
@@ -56,19 +58,21 @@ export function CreateJob(props) {
 
 CreateJob.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  globalData: PropTypes.object.isRequired,
   createJobData: PropTypes.object.isRequired,
-  getProfesstions: PropTypes.func.isRequired,
+  getProfessions: PropTypes.func.isRequired,
   getLocations: PropTypes.func.isRequired,
   onSubmitForm: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
   createJobData: makeSelectCreateJob(),
+  globalData: makeSelectGlobalState(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
-    getProfesstions: () => dispatch(getProfesstions()),
+    getProfessions: () => dispatch(getProfessions()),
     getLocations: () => dispatch(getLocations()),
     onSubmitForm: data => {
       if (data !== undefined && data.preventDefault) data.preventDefault();
