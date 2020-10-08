@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useForm } from 'react-hook-form';
+import Select from 'react-select';
+import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers';
 import Icon from 'components/Icon';
 import uploadIcon from 'images/icons/upload.svg';
@@ -9,15 +10,10 @@ import formSchema from './formSchema';
 import PreviewBox from '../PreviewBox';
 
 const EditJobForm = props => {
-  const {
-    editJobData,
-    onSubmitForm,
-    locations,
-    professions,
-    jobDetail,
-  } = props;
+  const { globalData, onSubmitForm, jobDetail } = props;
   const [fileName, changeFileName] = useState('file name');
-  const { register, handleSubmit, watch, errors } = useForm({
+
+  const { register, handleSubmit, watch, errors, control } = useForm({
     mode: 'onChange',
     reValidateMode: 'onChange',
     shouldFocusError: true,
@@ -55,25 +51,17 @@ const EditJobForm = props => {
                 <span className="formLabel">
                   Location <i>Optional</i>
                 </span>
-                <div className="wrapSelectionField">
-                  <select
-                    ref={register}
-                    name="location"
-                    required
-                    className="form-control"
-                    defaultValue=""
-                  >
-                    <option value="" disabled hidden>
-                      Select Location
-                    </option>
-                    {locations &&
-                      locations.map((item, i) => (
-                        <option key={i} value={item}>
-                          {item}
-                        </option>
-                      ))}
-                  </select>
-                </div>
+                <Controller
+                  as={Select}
+                  name="location"
+                  control={control}
+                  options={globalData.locations.map(
+                    ({ name: label, ...rest }) => ({
+                      label,
+                      ...rest,
+                    }),
+                  )}
+                />
               </div>
 
               <div className="form-group">
@@ -117,30 +105,20 @@ const EditJobForm = props => {
 
               <div className="form-group">
                 <span className="formLabel">Role Profession</span>
-                <div className="wrapSelectionField">
-                  <select
-                    ref={register}
-                    name="profession"
-                    required
-                    className="form-control"
-                    defaultValue=""
-                  >
-                    <option value="" disabled hidden>
-                      Select Profession
-                    </option>
-                    {professions &&
-                      professions.map((item, i) => (
-                        <option key={i} value={item}>
-                          {item}
-                        </option>
-                      ))}
-                  </select>
-                  {errors.profession && (
-                    <span className="formError">
-                      {errors.profession.message}
-                    </span>
+                <Controller
+                  as={Select}
+                  name="profession"
+                  control={control}
+                  options={globalData.professions.map(
+                    ({ name: label, ...rest }) => ({
+                      label,
+                      ...rest,
+                    }),
                   )}
-                </div>
+                />
+                {errors.profession && (
+                  <span className="formError">{errors.profession.message}</span>
+                )}
               </div>
 
               <div className="form-group">
@@ -170,7 +148,7 @@ const EditJobForm = props => {
 };
 
 EditJobForm.propTypes = {
-  editJobData: PropTypes.object,
+  globalData: PropTypes.object,
   professions: PropTypes.array,
   locations: PropTypes.array,
   jobDetail: PropTypes.object.isRequired,

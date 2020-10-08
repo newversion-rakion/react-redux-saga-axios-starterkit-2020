@@ -27,7 +27,7 @@ const Step2 = ({ register, errors, activeStep, changeStep, professions }) => (
         <div className="wrapSelectionField">
           <select
             ref={register}
-            name="profession_id"
+            name="profession"
             required
             className="form-control"
             defaultValue=""

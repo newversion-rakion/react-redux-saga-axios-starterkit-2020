@@ -48,7 +48,7 @@ const Step1 = ({ register, errors, activeStep, changeStep, locations }) => {
           <div className="wrapSelectionField">
             <select
               ref={register}
-              name="location_id"
+              name="location"
               required
               className="form-control"
               defaultValue=""
