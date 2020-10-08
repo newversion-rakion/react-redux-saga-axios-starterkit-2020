@@ -5,7 +5,7 @@
  */
 import produce from 'immer';
 import {
-  RESET_CREATEJOBDATA_REDUCER,
+  RESET_CREATE_JOBDATA_REDUCER,
   GET_PROFESSIONS_PENDING,
   GET_PROFESSIONS_SUCCESS,
   GET_PROFESSIONS_ERROR,
@@ -27,7 +27,7 @@ export const initialState = {
 const createJobReducer = (state = initialState, action) =>
   produce(state, (/* draft */) => {
     switch (action.type) {
-      case RESET_CREATEJOBDATA_REDUCER:
+      case RESET_CREATE_JOBDATA_REDUCER:
         return {
           loading: false,
           professions: [],

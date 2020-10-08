@@ -7,7 +7,6 @@ import {
 } from './constants';
 
 export const initialState = {
-  testData: '...',
   loading: false,
 };
 

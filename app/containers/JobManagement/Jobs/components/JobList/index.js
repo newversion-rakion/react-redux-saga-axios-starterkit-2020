@@ -28,9 +28,8 @@ const JobList = ({ boxTitle, isCurrentJobs, jobList }) => (
 
     <div className="jobList">
       <ul>
-        {jobList.map((item, i) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <li key={i} className="jobItem">
+        {jobList.map(item => (
+          <li key={item.id} className="jobItem">
             <div className="thumb">
               <img src={item.bacground_img} alt="" />
             </div>
@@ -55,14 +54,11 @@ const JobList = ({ boxTitle, isCurrentJobs, jobList }) => (
                 </div>
               </div>
               <ul className="profession">
-                {item.professions.map((professtionItem, index) => (
-                  // eslint-disable-next-line react/no-array-index-key
-                  <li key={index}>
-                    <Link to={`company/members/${professtionItem}`}>
-                      {professtionItem}
-                    </Link>
-                  </li>
-                ))}
+                <li>
+                  <Link to={`/company/members/${item.profession.id}`}>
+                    {item.profession.name}
+                  </Link>
+                </li>
               </ul>
               <ul className="footerItems">
                 {isCurrentJobs && (

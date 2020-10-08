@@ -5,7 +5,7 @@
  */
 
 import {
-  RESET_CREATEJOBDATA_REDUCER,
+  RESET_CREATE_JOBDATA_REDUCER,
   GET_PROFESSIONS_PENDING,
   GET_PROFESSIONS_SUCCESS,
   GET_PROFESSIONS_ERROR,
@@ -19,24 +19,24 @@ import {
 
 export function defaultAction() {
   return {
-    type: RESET_CREATEJOBDATA_REDUCER,
+    type: RESET_CREATE_JOBDATA_REDUCER,
   };
 }
 
-export function getProfesstions() {
+export function getProfessions() {
   return {
     type: GET_PROFESSIONS_PENDING,
   };
 }
 
-export function getProfesstionsSuccess(respond) {
+export function getProfessionsSuccess(respond) {
   return {
     type: GET_PROFESSIONS_SUCCESS,
     respond,
   };
 }
 
-export function getProfesstionsError(error) {
+export function getProfessionsError(error) {
   return {
     type: GET_PROFESSIONS_ERROR,
     error,

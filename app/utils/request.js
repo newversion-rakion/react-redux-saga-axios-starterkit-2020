@@ -7,25 +7,6 @@ const instance = axios.create({
   timeout: API_TIMEOUT,
 });
 
-const formDataInstance = axios.create({
-  baseURL: ROOT_URI,
-  timeout: API_TIMEOUT,
-});
-
-const sendFormDataRequest = ({ url, method, params, formData, apiName = '' }) =>
-  formDataInstance({
-    url,
-    method,
-    params,
-    data: formData,
-    headers: {
-      'Content-Type': 'multipart/form-data',
-      Authorization: localStorage.getItem('token') || '',
-    },
-  })
-    .then(response => handleSuccess(response.data, apiName))
-    .catch(error => handleError(error, apiName));
-
 const sendRequest = ({ url, method, params, data, apiName = '' }) =>
   instance({
     url,
@@ -33,7 +14,6 @@ const sendRequest = ({ url, method, params, data, apiName = '' }) =>
     params,
     data,
     headers: {
-      'Content-Type': 'application/json',
       Authorization: localStorage.getItem('token') || '',
     },
   })
@@ -45,9 +25,6 @@ export const get = ({ url, params, apiName }) =>
 
 export const post = ({ url, params, data, apiName }) =>
   sendRequest({ url, params, data, method: 'POST', apiName });
-
-export const postFormData = ({ url, params, formData, apiName }) =>
-  sendFormDataRequest({ url, params, formData, method: 'POST', apiName });
 
 export const put = ({ url, params, data, apiName }) =>
   sendRequest({ url, params, data, method: 'PUT', apiName });

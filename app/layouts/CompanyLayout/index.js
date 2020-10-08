@@ -3,11 +3,12 @@ import { Switch } from 'react-router-dom';
 import MainNav from 'components/MainNav/Loadable';
 import DashBoard from 'containers/DashBoard/Loadable';
 import Team from 'containers/Team/Loadable';
-import Jobs from 'containers/Jobs/Loadable';
-import CreateJob from 'containers/CreateJob/Loadable';
+import Jobs from 'containers/JobManagement/Jobs/Loadable';
+import CreateJob from 'containers/JobManagement/CreateJob/Loadable';
+import EditJob from 'containers/JobManagement/EditJob/Loadable';
 import Messages from 'containers/Messages/Loadable';
 import Members from 'containers/Members/Loadable';
-import CreateJobSucceed from 'containers/CreateJobSucceed/Loadable';
+import CreateJobSucceed from 'containers/JobManagement/CreateJobSucceed/Loadable';
 import RouterInterceptor from 'utils/routerInterceptor';
 import CompanyLayoutStyle from './CompanyLayoutStyle';
 
@@ -21,6 +22,11 @@ const CompanyLayout = props => (
         <RouterInterceptor path="/company/team" component={Team} />
         <RouterInterceptor path="/company/members" component={Members} />
         <RouterInterceptor exact path="/company/jobs" component={Jobs} />
+        <RouterInterceptor
+          exact
+          path="/company/jobs/:id/edit"
+          component={EditJob}
+        />
         <RouterInterceptor
           exact
           path="/company/jobs/create"
