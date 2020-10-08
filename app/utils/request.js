@@ -55,7 +55,6 @@ export const put = ({ url, params, data, apiName }) =>
 export const deleteData = ({ url, params, data, apiName }) =>
   sendRequest({ url, params, data, method: 'DELETE', apiName });
 
-
 const handleSuccess = (respond, apiName) => {
   if (apiName) {
     const message = `${apiName} is succeed`;
