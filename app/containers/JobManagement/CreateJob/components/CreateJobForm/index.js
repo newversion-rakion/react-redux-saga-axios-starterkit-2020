@@ -9,7 +9,12 @@ import Step2 from '../Step2';
 import Step3 from '../Step3';
 
 const CreateJobForm = props => {
-  const { activeStep, changeStep, createJobData, onSubmitForm } = props;
+  const {
+    activeStep,
+    changeStep,
+    globalData,
+    onSubmitForm,
+  } = props;
 
   const { register, handleSubmit, watch, errors } = useForm({
     mode: 'onChange',
@@ -30,14 +35,14 @@ const CreateJobForm = props => {
             changeStep={changeStep}
             register={register}
             errors={errors}
-            locations={createJobData.locations}
+            locations={globalData.locations}
           />
           <Step2
             activeStep={activeStep}
             changeStep={changeStep}
             register={register}
             errors={errors}
-            professions={createJobData.professions}
+            professions={globalData.professions}
           />
           <Step3
             activeStep={activeStep}
@@ -51,7 +56,7 @@ const CreateJobForm = props => {
 };
 
 CreateJobForm.propTypes = {
-  createJobData: PropTypes.object,
+  globalData: PropTypes.object,
   activeStep: PropTypes.string,
   changeStep: PropTypes.func,
   onSubmitForm: PropTypes.func.isRequired,

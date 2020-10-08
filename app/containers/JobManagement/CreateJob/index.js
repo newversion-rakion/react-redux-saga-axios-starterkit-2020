@@ -12,8 +12,10 @@ import { compose } from 'redux';
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
 import Loading from 'components/Loading';
+import { getProfessions, getLocations } from 'containers/App/actions';
+import { makeSelectGlobalState } from 'containers/App/selectors';
 import makeSelectCreateJob from './selectors';
-import { getProfessions, getLocations, createJob } from './actions';
+import { createJob } from './actions';
 import { RESET_CREATE_JOBDATA_REDUCER } from './constants';
 import reducer from './reducer';
 import saga from './saga';
@@ -35,7 +37,6 @@ export function CreateJob(props) {
     props.getLocations();
   }, []);
   const [activeStep, changeStep] = useState('step1');
-
   return (
     <>
       <Loading loading={props.createJobData.loading} />
@@ -45,6 +46,7 @@ export function CreateJob(props) {
           <CreateJobForm
             onSubmitForm={props.onSubmitForm}
             createJobData={props.createJobData}
+            globalData={props.globalData}
             activeStep={activeStep}
             changeStep={changeStep}
           />
@@ -56,6 +58,7 @@ export function CreateJob(props) {
 
 CreateJob.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  globalData: PropTypes.object.isRequired,
   createJobData: PropTypes.object.isRequired,
   getProfessions: PropTypes.func.isRequired,
   getLocations: PropTypes.func.isRequired,
@@ -64,6 +67,7 @@ CreateJob.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   createJobData: makeSelectCreateJob(),
+  globalData: makeSelectGlobalState(),
 });
 
 function mapDispatchToProps(dispatch) {
