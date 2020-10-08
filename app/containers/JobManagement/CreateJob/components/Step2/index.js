@@ -1,8 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Controller } from 'react-hook-form';
+import Select from 'react-select';
 import classNames from 'classnames';
 import formThumbStep2 from 'images/thumbs/createJob/formThumbStep2.svg';
-const Step2 = ({ register, errors, activeStep, changeStep, professions }) => (
+const Step2 = ({
+  register,
+  errors,
+  activeStep,
+  changeStep,
+  professions,
+  control,
+}) => (
   <div
     className={classNames(
       'stepItem',
@@ -25,22 +34,26 @@ const Step2 = ({ register, errors, activeStep, changeStep, professions }) => (
       <div className="form-group">
         <span className="formLabel">Role Profession</span>
         <div className="wrapSelectionField">
-          <select
-            ref={register}
+          <Controller
+            control={control}
             name="profession"
-            required
-            className="form-control"
-            defaultValue=""
-          >
-            <option value="" disabled hidden>
-              Select Profession
-            </option>
-            {professions.map(item => (
-              <option key={item.id} value={item.id}>
-                {item.name}
-              </option>
-            ))}
-          </select>
+            defaultValue={{}}
+            render={({ onChange, value }) => (
+              <div className="wrapReselect">
+                <Select
+                  placeholder="Type to search"
+                  options={professions.map(({ name: label, ...rest }) => ({
+                    label,
+                    ...rest,
+                  }))}
+                  defaultValue={value}
+                  onChange={e => {
+                    onChange(e);
+                  }}
+                />
+              </div>
+            )}
+          />
           {errors.profession && (
             <span className="formError">{errors.profession.message}</span>
           )}
@@ -96,6 +109,7 @@ Step2.propTypes = {
   activeStep: PropTypes.string,
   professions: PropTypes.array,
   changeStep: PropTypes.func,
+  control: PropTypes.object,
 };
 
 export default Step2;

@@ -11,7 +11,7 @@ import PreviewBox from '../PreviewBox';
 
 const EditJobForm = props => {
   const { globalData, onSubmitForm, jobDetail } = props;
-  const [fileName, changeFileName] = useState('file name');
+  const [fileName, changeFileName] = useState(jobDetail.bacground_img);
 
   const { register, handleSubmit, watch, errors, control } = useForm({
     mode: 'onChange',
@@ -52,14 +52,29 @@ const EditJobForm = props => {
                   Location <i>Optional</i>
                 </span>
                 <Controller
-                  as={Select}
-                  name="location"
                   control={control}
-                  options={globalData.locations.map(
-                    ({ name: label, ...rest }) => ({
-                      label,
-                      ...rest,
-                    }),
+                  name="location"
+                  defaultValue={() => {
+                    const { location } = jobDetail;
+                    location.label = location.name;
+                    delete location.name;
+                    return location;
+                  }}
+                  render={({ onChange, value }) => (
+                    <div className="wrapReselect">
+                      <Select
+                        options={globalData.locations.map(
+                          ({ name: label, ...rest }) => ({
+                            label,
+                            ...rest,
+                          }),
+                        )}
+                        defaultValue={value}
+                        onChange={e => {
+                          onChange(e);
+                        }}
+                      />
+                    </div>
                   )}
                 />
               </div>
@@ -106,14 +121,29 @@ const EditJobForm = props => {
               <div className="form-group">
                 <span className="formLabel">Role Profession</span>
                 <Controller
-                  as={Select}
-                  name="profession"
                   control={control}
-                  options={globalData.professions.map(
-                    ({ name: label, ...rest }) => ({
-                      label,
-                      ...rest,
-                    }),
+                  name="profession"
+                  defaultValue={() => {
+                    const { profession } = jobDetail;
+                    profession.label = profession.name;
+                    delete profession.name;
+                    return profession;
+                  }}
+                  render={({ onChange, value }) => (
+                    <div className="wrapReselect">
+                      <Select
+                        options={globalData.professions.map(
+                          ({ name: label, ...rest }) => ({
+                            label,
+                            ...rest,
+                          }),
+                        )}
+                        defaultValue={value}
+                        onChange={e => {
+                          onChange(e);
+                        }}
+                      />
+                    </div>
                   )}
                 />
                 {errors.profession && (

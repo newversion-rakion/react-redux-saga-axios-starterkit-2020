@@ -16,7 +16,7 @@ const CreateJobForm = props => {
     onSubmitForm,
   } = props;
 
-  const { register, handleSubmit, watch, errors } = useForm({
+  const { register, handleSubmit, watch, errors, control } = useForm({
     mode: 'onChange',
     reValidateMode: 'onChange',
     shouldFocusError: true,
@@ -35,6 +35,7 @@ const CreateJobForm = props => {
             changeStep={changeStep}
             register={register}
             errors={errors}
+            control={control}
             locations={globalData.locations}
           />
           <Step2
@@ -42,6 +43,7 @@ const CreateJobForm = props => {
             changeStep={changeStep}
             register={register}
             errors={errors}
+            control={control}
             professions={globalData.professions}
           />
           <Step3

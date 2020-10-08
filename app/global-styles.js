@@ -138,6 +138,54 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+  .wrapReselect {
+    div[class$="-control"] {
+      min-height: 48px;
+    }
+    div[class$="-ValueContainer"] {
+      padding: 0 15px;
+    }
+    div[class$="-singleValue"] {
+      color: #0E142C;
+      font-size: 14px;
+      font-family: ${CSS.FONT600};
+    }
+    span[class$="-indicatorSeparator"] {
+      display: none;
+    }
+    div[class$="-menu"] {
+      div[class$="-option"] {
+        font-size: 14px;
+        font-family: ${CSS.FONT600};
+        &:hover {
+          cursor: pointer;
+          background: #000000;
+        }
+      }
+    }
+    div[class$="-indicatorContainer"] {
+      position: relative;
+      width: 38px;
+      height: 38px;
+      &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        margin-top: -3px;
+        right: 20px;
+        width: 0;
+        height: 0;
+        pointer-events: none;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-top: 6px solid #8F9299;
+      }
+      svg {
+        display: none;
+      }
+    }
+  }
+
   // Edit Company Form
   .editCompanyFormWrapper {
     .modal-dialog {
