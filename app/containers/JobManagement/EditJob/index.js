@@ -35,11 +35,13 @@ export function EditJob(props) {
       <Loading loading={props.editJobData.loading} />
       <EditJobStyle>
         <div className="pageContent">
-          <EditJobForm
-            onSubmitForm={props.onSubmitForm}
-            jobDetail={props.editJobData.jobDetail}
-            globalData={props.globalData}
-          />
+          {props.editJobData.jobDetail && (
+            <EditJobForm
+              onSubmitForm={props.onSubmitForm}
+              jobDetail={props.editJobData.jobDetail}
+              globalData={props.globalData}
+            />
+          )}
         </div>
       </EditJobStyle>
     </>

@@ -16,6 +16,11 @@ export function* getProfessions() {
   };
   try {
     const respond = yield call(Api.get, payload);
+    const prosessedData = respond.data.map(({ name: label, ...rest }) => ({
+      label,
+      ...rest,
+    }));
+    respond.data = prosessedData;
     yield put(getProfessionsSuccess(respond));
   } catch (err) {
     yield put(getProfessionsError(err));
@@ -30,6 +35,11 @@ export function* getLocations() {
   };
   try {
     const respond = yield call(Api.get, payload);
+    const prosessedData = respond.data.map(({ name: label, ...rest }) => ({
+      label,
+      ...rest,
+    }));
+    respond.data = prosessedData;
     yield put(getLocationsSuccess(respond));
   } catch (err) {
     yield put(getLocationsError(err));

@@ -1,13 +1,23 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Controller } from 'react-hook-form';
+import Select from 'react-select';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import Icon from 'components/Icon';
 import uploadIcon from 'images/icons/upload.svg';
 import formThumbStep1 from 'images/thumbs/createJob/formThumbStep1.svg';
 
-const Step1 = ({ register, errors, activeStep, changeStep, locations }) => {
-  const [fileName, changeFileName] = useState('file name');
+const Step1 = ({
+  register,
+  errors,
+  activeStep,
+  changeStep,
+  locations,
+  control,
+  changeCoverFile,
+  coverFile,
+}) => {
   return (
     <div
       className={classNames(
@@ -45,24 +55,22 @@ const Step1 = ({ register, errors, activeStep, changeStep, locations }) => {
           <span className="formLabel">
             Location <i>Optional</i>
           </span>
-          <div className="wrapSelectionField">
-            <select
-              ref={register}
-              name="location"
-              required
-              className="form-control"
-              defaultValue=""
-            >
-              <option value="" disabled hidden>
-                Select Location
-              </option>
-              {locations.map(item => (
-                <option key={item.id} value={item.id}>
-                  {item.name}
-                </option>
-              ))}
-            </select>
-          </div>
+          <Controller
+            control={control}
+            name="location"
+            render={({ onChange, value }) => (
+              <div className="wrapReselect">
+                <Select
+                  placeholder="Select Location"
+                  options={locations}
+                  value={value}
+                  onChange={e => {
+                    onChange(e);
+                  }}
+                />
+              </div>
+            )}
+          />
         </div>
 
         <div className="form-group">
@@ -90,13 +98,16 @@ const Step1 = ({ register, errors, activeStep, changeStep, locations }) => {
                 accept="image/*"
                 name="cover_photo_file"
                 onChange={e => {
-                  changeFileName(e.target.files[0].name);
+                  changeCoverFile({
+                    src: URL.createObjectURL(e.target.files[0]),
+                    name: e.target.files[0].name,
+                  });
                 }}
               />
               <Icon src={uploadIcon} alt="" />
               Upload
             </label>
-            <span className="uploadFileName">{fileName}</span>
+            <span className="uploadFileName">{coverFile.name}</span>
           </div>
         </div>
 
@@ -130,6 +141,9 @@ Step1.propTypes = {
   locations: PropTypes.array,
   activeStep: PropTypes.string,
   changeStep: PropTypes.func,
+  control: PropTypes.object,
+  coverFile: PropTypes.object,
+  changeCoverFile: PropTypes.func,
 };
 
 export default Step1;

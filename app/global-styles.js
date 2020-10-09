@@ -138,6 +138,122 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+  .wrapReselect {
+    div[class$="-control"] {
+      min-height: 48px;
+    }
+    div[class$="-ValueContainer"] {
+      padding: 0 15px;
+    }
+    div[class$="-singleValue"] {
+      color: #0E142C;
+      font-size: 14px;
+      font-family: ${CSS.FONT600};
+    }
+    span[class$="-indicatorSeparator"] {
+      display: none;
+    }
+    div[class$="-placeholder"] {
+      font-family: ${CSS.FONT500};
+      color: #8F9299;
+      font-size: 14px;
+    }
+    div[class$="-menu"] {
+      div[class$="-option"] {
+        font-size: 14px;
+        font-family: ${CSS.FONT600};
+        &:hover {
+          cursor: pointer;
+          background: #000000;
+        }
+      }
+    }
+    div[class$="-indicatorContainer"] {
+      position: relative;
+      width: 38px;
+      height: 38px;
+      &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        margin-top: -3px;
+        right: 20px;
+        width: 0;
+        height: 0;
+        pointer-events: none;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-top: 6px solid #8F9299;
+      }
+      svg {
+        display: none;
+      }
+    }
+  }
+
+  // Hired action in Edit Job modal
+  .confirmJobActionModal {
+    .modal-dialog {
+      max-width: 480px;
+    }
+    .modal-content {
+      box-shadow: 0px 3.04124px 25.8505px rgba(0, 0, 0, 0.1);
+      border-radius: 15.2062px;
+      border: 0;
+    }
+    .confirmJobActionModalContent {
+      padding: 45px 50px 30px;
+    }
+    .modalTitle {
+      font-size: 28px;
+      line-height: 38px;
+      margin: 0 0 20px;
+      color: #000000;
+      font-family: ${CSS.FONT700};
+      text-align: center;
+    }
+    .modalDescription {
+      font-size: 16px;
+      line-height: 23px;
+      color: #000000;
+      font-family: ${CSS.FONT600};
+      margin: 0 0 30px;
+      text-align: center;
+      strong {
+        font-family: ${CSS.FONT700};
+      }
+    }
+    .btnGroup {
+      width: 264px;
+      margin: 0 auto;
+      .btn {
+        font-size: 16px;
+        line-height: 22px;
+        color: #FFFFFF;
+        background: #2B75CC;
+        padding: 18px 10px;
+        border-radius: 50px;
+        display: block;
+        width: 100%;
+        border: 3px solid #2B75CC;
+        margin: 0 0 16px;
+        font-family: ${CSS.FONT700};
+        transition: all 0.3s ease 0s;
+        &.btnCancel {
+          background: #ffffff;
+          border-color: #686D86;
+          color: #686D86;
+        }
+        &.btnConfirm {
+          &:hover {
+            background: #225ea3;
+            border-color: #225ea3;
+          }
+        }
+      }
+    }
+  }
+
   // Edit Company Form
   .editCompanyFormWrapper {
     .modal-dialog {

@@ -5,6 +5,9 @@ import { CREATE_JOB_PENDING } from './constants';
 
 export function* createJob(action) {
   const dataJSON = action.data;
+  dataJSON.profession = dataJSON.profession.id;
+  dataJSON.location = dataJSON.location.id;
+
   const data = new FormData();
 
   data.append('cover_photo_file', [...dataJSON.cover_photo_file][0]);
