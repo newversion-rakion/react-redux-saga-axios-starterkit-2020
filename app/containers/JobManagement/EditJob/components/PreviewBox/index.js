@@ -11,6 +11,7 @@ import deleteIcon from 'images/icons/delete.svg';
 import leftArrowIcon from 'images/icons/left-arrow.svg';
 import locationIcon from 'images/icons/location.svg';
 import PreviewBoxStyle from './PreviewBoxStyle';
+import { bottomNavBarData } from './staticData';
 
 const PreviewBox = props => {
   const { watchAllFields, coverFile, setValue } = props;
@@ -69,14 +70,17 @@ const PreviewBox = props => {
             </div>
             <div className="previewBoxFooter">
               <div className="btnGroup">
-                <button type="button" className="btn btnApply">
-                  Apply
-                </button>
-                <button type="button" className="btn btnShare">
-                  Send to a Friend
-                </button>
+                <span className="btn btnApply">Apply</span>
+                <span className="btn btnShare">Send to a Friend</span>
               </div>
-              <div className="bottomBar" />
+              <div className="bottomNavBar">
+                {bottomNavBarData.map(item => (
+                  <div>
+                    <Icon src={item.src} />
+                    <span>{item.text}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -86,7 +90,7 @@ const PreviewBox = props => {
           type="button"
           onClick={handleShow}
           className="btn btn-primary btnToggleJobHireStage"
-          disabled={watchAllFields.is_hired}
+          disabled={!!watchAllFields.is_hired}
         >
           <Icon src={hiredIcon} />
           {watchAllFields.is_hired ? 'Hired' : ' Mark as Hired'}

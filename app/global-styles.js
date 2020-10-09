@@ -164,6 +164,7 @@ const GlobalStyle = createGlobalStyle`
         font-family: ${CSS.FONT600};
         &:hover {
           cursor: pointer;
+          color: #ffffff;
           background: #000000;
         }
       }
@@ -363,6 +364,10 @@ const GlobalStyle = createGlobalStyle`
         font-family: ${CSS.FONT700};
         border-radius: 50px;
         min-width: 264px;
+        transition: all 0.3s ease 0s;
+        &:hover {
+          background: #225ea3;
+        }
       }
     }
   }

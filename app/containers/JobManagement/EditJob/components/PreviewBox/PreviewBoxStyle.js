@@ -22,6 +22,8 @@ const PreviewBoxStyle = styled.div`
       z-index: 0;
       position: absolute;
       top: 0;
+      left: 0;
+      width: 100%;
     }
   }
   .headerButtons {
@@ -81,17 +83,29 @@ const PreviewBoxStyle = styled.div`
       margin: 20px 0 0;
       object {
         margin: 0 8px 0 0;
+        transition: all 0.3s ease 0s;
       }
     }
     .btnToggleJobHireStage {
       background: #28bf89;
       border-color: #28bf89;
       color: #ffffff;
+      &:disabled,
+      &:hover,
+      &:focus,
+      &:active {
+        background: none;
+        border: 2px solid #28bf89;
+        color: #28bf89;
+        object {
+          filter: invert(66%) sepia(36%) saturate(843%) hue-rotate(107deg)
+            brightness(89%) contrast(84%);
+        }
+      }
     }
     .btnDeleteJob {
       color: #686d86;
       opacity: 0.5;
-      padding: 6px 22px;
     }
   }
   .previewThumb {
@@ -208,15 +222,15 @@ const PreviewBoxStyle = styled.div`
   .scrollableBox {
     padding: 0 0 10px;
     overflow-y: auto;
-    height: calc(100% - 135px);
+    height: calc(100% - 130px);
     &::-webkit-scrollbar {
-      width: 1px;
+      width: 0px;
     }
   }
   .previewBoxFooter {
-    height: 135px;
+    height: 130px;
     .btnGroup {
-      padding: 0 10px;
+      padding: 10px 10px 0;
     }
     .btn {
       font-size: 7.43625px;
@@ -230,7 +244,7 @@ const PreviewBoxStyle = styled.div`
       width: 100%;
       padding: 8px 10px;
       & + .btn {
-        margin: 10px 0 0;
+        margin: 9px 0 0;
       }
       &.btnShare {
         border-color: #0e142c;
@@ -240,11 +254,29 @@ const PreviewBoxStyle = styled.div`
       }
     }
   }
-  .bottomBar {
-    background: red;
-    width: 100%;
-    height: 60px;
+  .bottomNavBar {
     margin: 8.5px 0 0;
+    padding: 2px 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background: #fcfcfd;
+    box-shadow: 0px -0.322523px 0px #abb7c0;
+    > div {
+      width: 20%;
+      padding: 0 5px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    span {
+      font-size: 5.48875px;
+      line-height: 7px;
+      letter-spacing: 0.02em;
+      color: #a5b2bc;
+      font-family: ${CSS.FONT700};
+    }
   }
 `;
 

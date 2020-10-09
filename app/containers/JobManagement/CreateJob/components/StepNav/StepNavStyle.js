@@ -14,17 +14,44 @@ const StepNavStyle = styled.div`
       flex-wrap: wrap;
       justify-content: center;
       cursor: pointer;
-      &.isActive,
-      &:hover {
+      &.isValid {
         span {
-          background: #ffffff;
-          box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.22);
-          border: 2px solid #2b75cc;
+          background: #6da8ec;
+          box-shadow: none;
+          border-color: transparent;
           &:before {
+            content: '';
             opacity: 1;
             visibility: visible;
+            width: 6px;
+            height: 10px;
+            background: none;
+            top: 2px;
+            left: 5px;
+            transform: rotate(45deg);
+            border-radius: 0;
+            border: 0;
+            border-right: 2px solid #ffffff;
+            border-bottom: 2px solid #ffffff;
           }
         }
+      }
+      &:not(.isValid) {
+        &.isActive,
+        &:hover {
+          span {
+            background: #ffffff;
+            box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.22);
+            border-color: #2b75cc;
+            &:before {
+              opacity: 1;
+              visibility: visible;
+            }
+          }
+        }
+      }
+      &.isActive,
+      &:hover {
         p {
           font-family: ${CSS.FONT700};
           color: #2b75cc;

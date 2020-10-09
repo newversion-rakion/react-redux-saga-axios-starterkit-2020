@@ -7,15 +7,15 @@ import formThumbStep2 from 'images/thumbs/createJob/formThumbStep2.svg';
 const Step2 = ({
   register,
   errors,
-  activeStep,
-  changeStep,
+  stepStatus,
+  changeStepStatus,
   professions,
   control,
 }) => (
   <div
     className={classNames(
       'stepItem',
-      activeStep === 'step2' ? 'isActiveStep' : '',
+      stepStatus.activeStep === 'step2' ? 'isActiveStep' : '',
     )}
   >
     <div className="formThumb">
@@ -33,27 +33,25 @@ const Step2 = ({
 
       <div className="form-group">
         <span className="formLabel">Role Profession</span>
-        <div className="wrapSelectionField">
-          <Controller
-            control={control}
-            name="profession"
-            render={({ onChange, value }) => (
-              <div className="wrapReselect">
-                <Select
-                  placeholder="Select Profession"
-                  options={professions}
-                  value={value}
-                  onChange={e => {
-                    onChange(e);
-                  }}
-                />
-              </div>
-            )}
-          />
-          {errors.profession && (
-            <span className="formError">{errors.profession.message}</span>
+        <Controller
+          control={control}
+          name="profession"
+          render={({ onChange, value }) => (
+            <div className="wrapReselect">
+              <Select
+                placeholder="Select Profession"
+                options={professions}
+                value={value}
+                onChange={e => {
+                  onChange(e);
+                }}
+              />
+            </div>
           )}
-        </div>
+        />
+        {errors.profession && (
+          <span className="formError">{errors.profession.message}</span>
+        )}
       </div>
 
       <div className="form-group">
@@ -78,7 +76,10 @@ const Step2 = ({
           <button
             type="button"
             onClick={() => {
-              changeStep('step1');
+              changeStepStatus({
+                ...stepStatus,
+                activeStep: 'step1',
+              });
             }}
             className="btn btnCancel"
           >
@@ -87,7 +88,10 @@ const Step2 = ({
           <button
             type="button"
             onClick={() => {
-              changeStep('step3');
+              changeStepStatus({
+                ...stepStatus,
+                activeStep: 'step3',
+              });
             }}
             className="btn btn-primary btnNextStep"
           >
@@ -102,9 +106,9 @@ const Step2 = ({
 Step2.propTypes = {
   register: PropTypes.func,
   errors: PropTypes.object,
-  activeStep: PropTypes.string,
+  stepStatus: PropTypes.object,
   professions: PropTypes.array,
-  changeStep: PropTypes.func,
+  changeStepStatus: PropTypes.func,
   control: PropTypes.object,
 };
 

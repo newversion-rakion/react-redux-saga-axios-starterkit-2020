@@ -41,7 +41,7 @@ const EditJobForm = props => {
   }, [jobDetail]);
 
   const watchAllFields = watch();
-  console.log(watchAllFields);
+
   return (
     <EditJobFormStyle>
       <form

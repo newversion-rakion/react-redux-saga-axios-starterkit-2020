@@ -31,9 +31,13 @@ export function* editJob(action) {
 
   dataJSON.profession = dataJSON.profession.id;
   dataJSON.location = dataJSON.location.id;
+  const coverFotoFile = [...dataJSON.cover_photo_file][0];
   const data = new FormData();
 
-  data.append('cover_photo_file', [...dataJSON.cover_photo_file][0]);
+  if (coverFotoFile) {
+    data.append('cover_photo_file', coverFotoFile);
+  }
+
   delete dataJSON.cover_photo_file;
   delete dataJSON.id;
 

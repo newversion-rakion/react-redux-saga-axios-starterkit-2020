@@ -8,17 +8,11 @@ import Iphone from 'images/iphone.png';
 import leftArrowIcon from 'images/icons/left-arrow.svg';
 import locationIcon from 'images/icons/location.svg';
 
-const Step3 = ({
-  activeStep,
-  changeStep,
-  watchAllFields,
-  fileName,
-  coverFile,
-}) => (
+const Step3 = ({ stepStatus, changeStepStatus, watchAllFields, coverFile }) => (
   <div
     className={classNames(
       'stepItem',
-      activeStep === 'step3' ? 'isActiveStep' : '',
+      stepStatus.activeStep === 'step3' ? 'isActiveStep' : '',
     )}
   >
     <div className="formThumb">
@@ -84,7 +78,10 @@ const Step3 = ({
           <button
             type="button"
             onClick={() => {
-              changeStep('step2');
+              changeStepStatus({
+                ...stepStatus,
+                activeStep: 'step2',
+              });
             }}
             className="btn btnCancel"
           >
@@ -100,9 +97,8 @@ const Step3 = ({
 );
 
 Step3.propTypes = {
-  activeStep: PropTypes.string,
-  changeStep: PropTypes.func,
-  fileName: PropTypes.string,
+  stepStatus: PropTypes.object,
+  changeStepStatus: PropTypes.func,
   watchAllFields: PropTypes.object,
   coverFile: PropTypes.object,
 };
