@@ -16,6 +16,10 @@ export function* getJobDetail(action) {
   };
   try {
     const respond = yield call(Api.get, payload);
+    respond.data.profession.label = respond.data.profession.name;
+    respond.data.location.label = respond.data.location.name;
+    delete respond.data.profession.name;
+    delete respond.data.location.name;
     yield put(getJobDetailSuccess(respond));
   } catch (err) {
     yield put(getJobDetailError(err));
@@ -23,14 +27,15 @@ export function* getJobDetail(action) {
 }
 
 export function* editJob(action) {
-  const dataJSON = action.data;
+  const dataJSON = { ...action.data };
+
   dataJSON.profession = dataJSON.profession.id;
   dataJSON.location = dataJSON.location.id;
-
   const data = new FormData();
 
   data.append('cover_photo_file', [...dataJSON.cover_photo_file][0]);
   delete dataJSON.cover_photo_file;
+  delete dataJSON.id;
 
   Object.entries(dataJSON).forEach(entry => {
     const [key, value] = entry;
@@ -38,14 +43,14 @@ export function* editJob(action) {
   });
 
   const payload = {
-    url: `/jobs/${action.jobId}/update_job`,
+    url: `/jobs/${action.data.id}/update_job`,
     params: null,
     data,
     apiName: 'edit job',
   };
 
   try {
-    const respond = yield call(Api.post, payload);
+    const respond = yield call(Api.put, payload);
     yield put(editJobSuccess(respond));
   } catch (err) {
     yield put(editJobError(err));

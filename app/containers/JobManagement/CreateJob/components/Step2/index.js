@@ -37,16 +37,12 @@ const Step2 = ({
           <Controller
             control={control}
             name="profession"
-            defaultValue={{}}
             render={({ onChange, value }) => (
               <div className="wrapReselect">
                 <Select
-                  placeholder="Type to search"
-                  options={professions.map(({ name: label, ...rest }) => ({
-                    label,
-                    ...rest,
-                  }))}
-                  defaultValue={value}
+                  placeholder="Select Profession"
+                  options={professions}
+                  value={value}
                   onChange={e => {
                     onChange(e);
                   }}

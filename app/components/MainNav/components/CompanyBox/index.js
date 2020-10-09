@@ -26,7 +26,7 @@ const CompanyBox = () => {
     shouldUnregister: true,
     defaultValues: {
       companyName: `${JSON.parse(localStorage.getItem('user_info'))
-        .companyName || ''}`,
+        .companyName || 'Company name'}`,
     },
     resolver: yupResolver(schema),
   });
@@ -42,7 +42,8 @@ const CompanyBox = () => {
           <div className="companyThumb">
             <img src={teamMemberThumb} alt="" />
           </div>
-          {JSON.parse(localStorage.getItem('user_info')).companyName}
+          {JSON.parse(localStorage.getItem('user_info')).companyName ||
+            'Company name'}
         </Link>
       </div>
       <button type="button" className="btnEditCompany" onClick={handleShow}>

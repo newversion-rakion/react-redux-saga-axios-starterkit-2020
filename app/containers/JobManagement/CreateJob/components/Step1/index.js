@@ -15,8 +15,9 @@ const Step1 = ({
   changeStep,
   locations,
   control,
+  changeCoverFile,
+  coverFile,
 }) => {
-  const [fileName, changeFileName] = useState('file name');
   return (
     <div
       className={classNames(
@@ -57,15 +58,12 @@ const Step1 = ({
           <Controller
             control={control}
             name="location"
-            defaultValue={{}}
             render={({ onChange, value }) => (
               <div className="wrapReselect">
                 <Select
-                  options={locations.map(({ name: label, ...rest }) => ({
-                    label,
-                    ...rest,
-                  }))}
-                  defaultValue={value}
+                  placeholder="Select Location"
+                  options={locations}
+                  value={value}
                   onChange={e => {
                     onChange(e);
                   }}
@@ -100,13 +98,16 @@ const Step1 = ({
                 accept="image/*"
                 name="cover_photo_file"
                 onChange={e => {
-                  changeFileName(e.target.files[0].name);
+                  changeCoverFile({
+                    src: URL.createObjectURL(e.target.files[0]),
+                    name: e.target.files[0].name,
+                  });
                 }}
               />
               <Icon src={uploadIcon} alt="" />
               Upload
             </label>
-            <span className="uploadFileName">{fileName}</span>
+            <span className="uploadFileName">{coverFile.name}</span>
           </div>
         </div>
 
@@ -141,6 +142,8 @@ Step1.propTypes = {
   activeStep: PropTypes.string,
   changeStep: PropTypes.func,
   control: PropTypes.object,
+  coverFile: PropTypes.object,
+  changeCoverFile: PropTypes.func,
 };
 
 export default Step1;

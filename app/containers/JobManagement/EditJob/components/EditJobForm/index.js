@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
 import { useForm, Controller } from 'react-hook-form';
@@ -11,9 +11,19 @@ import PreviewBox from '../PreviewBox';
 
 const EditJobForm = props => {
   const { globalData, onSubmitForm, jobDetail } = props;
-  const [fileName, changeFileName] = useState(jobDetail.bacground_img);
-
-  const { register, handleSubmit, watch, errors, control } = useForm({
+  const [coverFile, changeCoverFile] = useState({
+    src: jobDetail.bacground_img,
+    name: jobDetail.bacground_img,
+  });
+  const {
+    register,
+    handleSubmit,
+    watch,
+    errors,
+    control,
+    reset,
+    setValue,
+  } = useForm({
     mode: 'onChange',
     reValidateMode: 'onChange',
     shouldFocusError: true,
@@ -22,14 +32,30 @@ const EditJobForm = props => {
     resolver: yupResolver(formSchema),
   });
 
-  const watchAllFields = watch();
+  useEffect(() => {
+    reset(jobDetail);
+    changeCoverFile({
+      src: jobDetail.bacground_img,
+      name: jobDetail.bacground_img,
+    });
+  }, [jobDetail]);
 
+  const watchAllFields = watch();
+  console.log(watchAllFields);
   return (
     <EditJobFormStyle>
-      <div className="formRow">
-        <div className="formContentCol">
-          <div className="jobForm">
-            <form onSubmit={handleSubmit(onSubmitForm)}>
+      <form
+        onSubmit={handleSubmit(formValue => {
+          const values = {
+            ...formValue,
+            id: jobDetail.id,
+          };
+          onSubmitForm(values);
+        })}
+      >
+        <div className="formRow">
+          <div className="formContentCol">
+            <div className="jobForm">
               <h1 className="formTitle">Edit Job</h1>
 
               <h3 className="formSubTitle">Job Details</h3>
@@ -54,22 +80,11 @@ const EditJobForm = props => {
                 <Controller
                   control={control}
                   name="location"
-                  defaultValue={() => {
-                    const { location } = jobDetail;
-                    location.label = location.name;
-                    delete location.name;
-                    return location;
-                  }}
                   render={({ onChange, value }) => (
                     <div className="wrapReselect">
                       <Select
-                        options={globalData.locations.map(
-                          ({ name: label, ...rest }) => ({
-                            label,
-                            ...rest,
-                          }),
-                        )}
-                        defaultValue={value}
+                        options={globalData.locations}
+                        value={value}
                         onChange={e => {
                           onChange(e);
                         }}
@@ -106,13 +121,16 @@ const EditJobForm = props => {
                       accept="image/*"
                       name="cover_photo_file"
                       onChange={e => {
-                        changeFileName(e.target.files[0].name);
+                        changeCoverFile({
+                          src: URL.createObjectURL(e.target.files[0]),
+                          name: e.target.files[0].name,
+                        });
                       }}
                     />
                     <Icon src={uploadIcon} alt="" />
                     Upload
                   </label>
-                  <span className="uploadFileName">{fileName}</span>
+                  <span className="uploadFileName">{coverFile.name}</span>
                 </div>
               </div>
 
@@ -123,22 +141,11 @@ const EditJobForm = props => {
                 <Controller
                   control={control}
                   name="profession"
-                  defaultValue={() => {
-                    const { profession } = jobDetail;
-                    profession.label = profession.name;
-                    delete profession.name;
-                    return profession;
-                  }}
                   render={({ onChange, value }) => (
                     <div className="wrapReselect">
                       <Select
-                        options={globalData.professions.map(
-                          ({ name: label, ...rest }) => ({
-                            label,
-                            ...rest,
-                          }),
-                        )}
-                        defaultValue={value}
+                        options={globalData.professions}
+                        value={value}
                         onChange={e => {
                           onChange(e);
                         }}
@@ -166,21 +173,25 @@ const EditJobForm = props => {
                   </span>
                 )}
               </div>
-            </form>
+
+              <input type="hidden" name="is_hired" ref={register} />
+            </div>
+          </div>
+          <div className="formPreviewCol">
+            <PreviewBox
+              watchAllFields={watchAllFields}
+              setValue={setValue}
+              coverFile={coverFile}
+            />
           </div>
         </div>
-        <div className="formPreviewCol">
-          <PreviewBox watchAllFields={watchAllFields} />
-        </div>
-      </div>
+      </form>
     </EditJobFormStyle>
   );
 };
 
 EditJobForm.propTypes = {
   globalData: PropTypes.object,
-  professions: PropTypes.array,
-  locations: PropTypes.array,
   jobDetail: PropTypes.object.isRequired,
   onSubmitForm: PropTypes.func.isRequired,
 };
