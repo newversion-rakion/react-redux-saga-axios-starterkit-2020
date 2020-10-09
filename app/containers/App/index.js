@@ -27,10 +27,13 @@ export default function App() {
   return (
     <div>
       <Helmet
-        titleTemplate="Mixer, The Creative Network"
-        defaultTitle="Mixer, The Creative Network"
+        titleTemplate="React Starterkit, The Creative Network"
+        defaultTitle="React Starterkit, The Creative Network"
       >
-        <meta name="description" content="Mixer, The Creative Network" />
+        <meta
+          name="description"
+          content="React Starterkit, The Creative Network"
+        />
       </Helmet>
       <ReactNotification />
       <ScrolToTop />

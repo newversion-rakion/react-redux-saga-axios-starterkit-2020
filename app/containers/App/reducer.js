@@ -7,9 +7,6 @@ import {
   GET_PROFESSIONS_PENDING,
   GET_PROFESSIONS_SUCCESS,
   GET_PROFESSIONS_ERROR,
-  GET_LOCATIONS_PENDING,
-  GET_LOCATIONS_SUCCESS,
-  GET_LOCATIONS_ERROR,
 } from './constants';
 
 export const initialState = {
@@ -20,6 +17,7 @@ export const initialState = {
 
 /* eslint-disable default-case, no-param-reassign */
 const appReducer = (state = initialState, action) =>
+  // eslint-disable-next-line consistent-return
   produce(state, (/* draft */) => {
     switch (action.type) {
       case REQUEST_PENDING:
@@ -33,12 +31,6 @@ const appReducer = (state = initialState, action) =>
       case GET_PROFESSIONS_SUCCESS:
         return { ...state, professions: action.respond.data, loading: false };
       case GET_PROFESSIONS_ERROR:
-        return { ...state, loading: false };
-      case GET_LOCATIONS_PENDING:
-        return { ...state, loading: true };
-      case GET_LOCATIONS_SUCCESS:
-        return { ...state, locations: action.respond.data, loading: false };
-      case GET_LOCATIONS_ERROR:
         return { ...state, loading: false };
       case DEFAULT_ACTION:
         break;
