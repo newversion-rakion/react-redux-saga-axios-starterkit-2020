@@ -1,13 +1,13 @@
 import React from 'react';
 import MainNav from 'components/MainNav/Loadable';
-import CompanyLayoutStyle from './CompanyLayoutStyle';
+import LoggedLayoutStyle from './LoggedLayoutStyle';
 
 // eslint-disable-next-line react/prop-types
 const CompanyLayout = props => (
-  <CompanyLayoutStyle>
+  <LoggedLayoutStyle>
     <MainNav {...props} />
     <main className="mainPage" />
-  </CompanyLayoutStyle>
+  </LoggedLayoutStyle>
 );
 
 export default CompanyLayout;

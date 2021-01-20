@@ -12,8 +12,7 @@ import { Switch, Route } from 'react-router-dom';
 import ReactNotification from 'react-notifications-component';
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
-import CompanyLayout from 'layouts/CompanyLayout';
-import ApplicantLayout from 'layouts/ApplicantLayout';
+import LoggedLayout from 'layouts/LoggedLayout';
 import ScrolToTop from 'components/ScrollToTop';
 import Login from 'containers/Login/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
@@ -40,8 +39,7 @@ export default function App() {
       <Switch>
         <Route path="/" exact component={Login} />
         <Route path="/login" exact component={Login} />
-        <Route path="/company" component={CompanyLayout} />
-        <Route path="/applicant" component={ApplicantLayout} />
+        <Route path="/company" component={LoggedLayout} />
         <Route path="" component={NotFoundPage} />
       </Switch>
       <GlobalStyle />
