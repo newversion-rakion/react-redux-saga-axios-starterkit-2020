@@ -39,7 +39,7 @@ export default function App() {
       <Switch>
         <Route path="/" exact component={Login} />
         <Route path="/login" exact component={Login} />
-        <Route path="/company" component={LoggedLayout} />
+        <Route path="/in" component={LoggedLayout} />
         <Route path="" component={NotFoundPage} />
       </Switch>
       <GlobalStyle />
